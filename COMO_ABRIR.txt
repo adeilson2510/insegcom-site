@@ -1,0 +1,13 @@
+V8 — CORREÇÃO DOS BOTÕES DOS SERVIÇOS
+
+Na home, as setas dos seis serviços agora levam para o detalhamento correspondente:
+01 Instalações Elétricas -> #servico-0
+02 Automação Industrial -> #servico-1
+03 Automação Predial e Residencial -> #servico-2
+04 CFTV e Segurança -> #servico-3
+05 Redes e Cabeamento Estruturado -> #servico-4
+06 Climatização -> #servico-5
+
+Não apontam mais para o rodapé.
+O link do style.css também foi corrigido.
+Kronix Predial e Veicular continuam separados.

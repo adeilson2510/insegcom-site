@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KRONIX • Predial</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header>
+  <a class="brand" href="../index.html"><span class="mark">I</span><div><b>KRONIX</b><small>BY INSEGCOM • VOLTAR AO SITE</small></div></a>
+  <div class="experience">
+    <button class="experience-tab active" data-mode="building">KRONIX PREDIAL</button>
+    <button class="experience-tab" data-mode="vehicle">KRONIX VEICULAR</button>
+  </div>
+  <div class="live"><i></i> DEMONSTRAÇÃO ONLINE</div>
+</header>
+<section class="mission-bar">
+  <div>
+    <small>EXPERIÊNCIA KRONIX</small>
+    <b id="missionTitle">MISSÃO 01 • EXPLORE O SISTEMA</b>
+    <span id="missionText">Clique em um ambiente e descubra como o Kronix responde.</span>
+  </div>
+  <div class="mission-progress"><i id="missionProgress"></i></div>
+  <div class="operator-score"><small>OPERADOR</small><b id="score">0</b><span>XP</span></div><button id="missionNext">PRÓXIMA MISSÃO →</button>
+</section>
+
+
+<section id="buildingView" class="view active">
+  <div class="toolbar">
+    <div><span>PLANTA</span><button class="floor active">TÉRREO</button><button class="floor">1º PAV.</button><button class="floor">2º PAV.</button></div>
+    <div class="clock" id="clock"></div>
+  </div>
+  <main>
+    <section class="panel">
+      <div class="panel-head"><div><small>EDIFÍCIO INSEGCOM</small><h1>Térreo</h1></div><div class="normal"><i></i>SISTEMA NORMAL</div></div>
+      <div class="plant">
+        <div class="room r1" data-name="Sala 01" data-type="light"><b>SALA 01</b><span>ILUMINAÇÃO <i class="state on"></i></span></div>
+        <div class="room r2" data-name="Sala 02" data-type="ac"><b>SALA 02</b><span>CLIMATIZAÇÃO <strong>22.5°C</strong></span></div>
+        <div class="room r3" data-name="Sala 03" data-type="light"><b>SALA 03</b><span>ILUMINAÇÃO <i class="state"></i></span></div>
+        <div class="room r4" data-name="Sala Técnica" data-type="energy"><b>SALA TÉCNICA</b><span>ENERGIA <strong>3.8 kW</strong></span></div>
+        <div class="room r5" data-name="Corredor" data-type="light"><b>CORREDOR</b><span>ILUMINAÇÃO <i class="state on"></i></span></div>
+        <div class="room r6" data-name="Acesso" data-type="door"><b>ACESSO</b><span>PORTA <strong>FECHADA</strong></span></div>
+        <div class="center">KRONIX<br><b>SUPERVISÃO</b></div>
+      </div>
+      <div class="tip">Clique nos ambientes para controlar a instalação.</div>
+    </section>
+    <aside>
+      <div class="card"><div class="title"><small>SELEÇÃO</small><b id="selected">Sala 01</b></div><div id="details"></div></div>
+      <div class="card"><div class="title"><small>EVENTOS KRONIX</small><b id="count">04</b></div><div id="events"></div></div>
+      <div class="card"><div class="title"><small>SISTEMAS</small><b>ONLINE</b></div>
+        <div class="system"><span>ILUMINAÇÃO</span><i>●</i><small>10 CIRCUITOS</small></div>
+        <div class="system"><span>CLIMATIZAÇÃO</span><i>●</i><small>14 EQUIPAMENTOS</small></div>
+        <div class="system"><span>ENERGIA</span><i>●</i><small>MONITORADA</small></div>
+        <div class="system"><span>SEGURANÇA</span><i>●</i><small>ATIVA</small></div>
+      </div>
+    </aside>
+  </main>
+  <div class="simulate"><div><small>EXPERIMENTE</small><h2>Você controla. O Kronix <b>responde.</b></h2></div><div><button id="scene">ATIVAR CENA →</button><button id="fault" class="warn">SIMULAR FALHA ⚠</button><button id="restore">RESTAURAR</button></div></div>
+</section>
+
+<section id="vehicleView" class="view">
+  <div class="vehicle-toolbar"><div><span>KRONIX VEICULAR</span><b>ONIX • DEMONSTRAÇÃO</b></div><div class="clock" id="vclock"></div></div>
+  <main class="vehicle-main">
+    <section class="vehicle-stage">
+      <div class="stage-top"><div><small>VEÍCULO CONECTADO</small><h1>Telemetria em tempo real</h1></div><div class="normal"><i></i> VEÍCULO ONLINE</div></div>
+      <div class="car-scene">
+        <div class="scan"></div>
+        <div class="hud-corner tl">KRONIX / VEHICLE CORE<br><b>CAN • TELEMETRIA</b></div>
+        <div class="hud-corner tr">GPS <b>ONLINE</b><br>LINK <b>ATIVO</b></div>
+
+        <div class="gauge gauge-speed">
+          <svg viewBox="0 0 180 180"><circle class="g-bg" cx="90" cy="90" r="70"/><circle class="g-progress speed-progress" cx="90" cy="90" r="70"/>
+          <line id="speedNeedle" x1="90" y1="90" x2="90" y2="32"/></svg>
+          <div class="g-label">km/h</div><div class="g-number" id="speedGauge">85</div>
+        </div>
+
+        <img src="assets/onix_4k.png" alt="Representação do veículo">
+
+        <div class="gauge gauge-rpm">
+          <svg viewBox="0 0 180 180"><circle class="g-bg" cx="90" cy="90" r="70"/><circle class="g-progress rpm-progress" cx="90" cy="90" r="70"/>
+          <line id="rpmNeedle" x1="90" y1="90" x2="90" y2="32"/></svg>
+          <div class="g-label">x1000 RPM</div><div class="g-number" id="rpmGauge">2.1</div>
+        </div>
+
+        <button class="hotspot h1" data-target="motor">◉ MOTOR</button>
+        <button class="hotspot h2" data-target="energy">◉ ENERGIA</button>
+        <button class="hotspot h3" data-target="telemetry">◉ TELEMETRIA</button>
+        <div class="vehicle-readout"><small id="vStatus">OPERAÇÃO NORMAL</small><b id="vSpeed">85</b><span>km/h</span></div>
+      </div>
+      <div class="drive-controls"><button id="slower">−</button><input id="speed" type="range" min="0" max="140" value="85"><button id="faster">+</button><label>VELOCIDADE SIMULADA</label></div>
+    </section>
+    <aside>
+      <div class="card vehicle-card"><div class="title"><small>TELEMETRIA</small><b>ONLINE</b></div>
+        <div class="big-metric"><span>VELOCIDADE</span><b id="speedVal">85</b><small>km/h</small></div>
+        <div class="metric-row"><span>RPM</span><b id="rpm">2.1 x1000</b></div>
+        <div class="metric-row"><span>TEMPERATURA</span><b id="temp">92 °C</b></div>
+        <div class="metric-row"><span>BATERIA</span><b id="battery">14.2 V</b></div>
+        <div class="metric-row"><span>AUTONOMIA</span><b id="range">302 km</b></div>
+      </div>
+      <div class="card"><div class="title"><small>EVENTOS KRONIX</small><b id="veCount">03</b></div><div id="vevents"></div></div>
+    </aside>
+  </main>
+  <section class="vehicle-metrics">
+    <div><small>ESTADO DO VEÍCULO</small><b>ONLINE</b><i></i></div>
+    <div><small>GPS</small><b>ATIVO</b><span>12 satélites</span></div>
+    <div><small>CAN BUS</small><b>COMUNICANDO</b><span>128 frames/s</span></div>
+    <div><small>ALERTAS</small><b id="alertMetric">0</b><span>última leitura normal</span></div>
+  </section>
+  <div class="vehicle-sim"><div><small>EXPERIMENTE O KRONIX</small><h2>Mude a condição. Observe a <b>resposta.</b></h2></div><div><button id="vehicleFault" class="warn">SIMULAR TEMPERATURA ALTA ⚠</button><button id="vehicleReset">RESTAURAR</button></div></div>
+</section>
+</div>
+<section id="contato" class="demo-contact"><small>INSEGCOM</small><h2>Pronto para ver o Kronix <b>funcionando de verdade?</b></h2><a href="mailto:contato@insegcom.com.br">SOLICITAR DEMONSTRAÇÃO →</a></section>
+<script src="script.js"></script><script>
+window.addEventListener("DOMContentLoaded", function(){
+  const tab=document.querySelector('.experience-tab[data-mode="building"]');
+  const b=document.getElementById('buildingView');
+  const v=document.getElementById('vehicleView');
+  document.querySelectorAll('.experience-tab').forEach(x=>x.classList.remove('active'));
+  if(tab) tab.classList.add('active');
+  if(b) b.classList.toggle('active', "building"==="building");
+  if(v) v.classList.toggle('active', "building"==="vehicle");
+});
+</script>
+
+<div id="finalPanel" class="final-panel">
+  <div class="final-kicker">KRONIX • EXPERIÊNCIA CONCLUÍDA</div>
+  <div class="final-ring"><b id="finalScore">0</b><small>XP</small></div>
+  <h2>Você conheceu o<br><b>Kronix por dentro.</b></h2>
+  <p>Agora imagine essa experiência aplicada à sua infraestrutura ou ao seu veículo.</p>
+  <div class="final-actions"><a href="#contato" id="realDemo">QUERO UMA DEMONSTRAÇÃO REAL →</a><button id="replay">EXPLORAR NOVAMENTE</button></div>
+</div>
+<div id="finalShade" class="final-shade"></div>
+<div id="missionToast" class="mission-toast">
+  <div class="toast-kicker">KRONIX • MISSÃO CONCLUÍDA</div>
+  <h3 id="toastTitle">Boa operação.</h3>
+  <p id="toastText">Você demonstrou uma função do sistema.</p>
+  <button id="toastClose">CONTINUAR</button>
+</div>
+<div id="missionShade" class="mission-shade"></div>
+</body>
+</html>

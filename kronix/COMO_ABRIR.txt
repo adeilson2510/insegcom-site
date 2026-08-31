@@ -1,0 +1,9 @@
+KRONIX — SIMULADOR V5
+Nova versão com experiência gamificada:
+• pontuação XP por missão
+• progresso do operador
+• encerramento da experiência
+• CTA para solicitar demonstração real
+• opção de explorar novamente
+
+Extraia o ZIP e abra index.html.
