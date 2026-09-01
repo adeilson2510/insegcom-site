@@ -19,6 +19,17 @@
 .proposal,.kronix{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}.proposal h2,.kronix h2{font-size:43px;line-height:1.08;margin:8px 0 18px}.proposal p,.kronix p{color:#61778b;line-height:1.7}.pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pillar{padding:22px;border:1px solid #dbe4eb;border-radius:12px;background:#fff}.pillar strong{display:block;margin-bottom:6px}.pillar span{font-size:13px;color:#6b7e8d}.kronix img{width:100%;display:block;border-radius:14px;border:1px solid #dbe5eb;box-shadow:0 20px 45px rgba(0,0,0,.13)}
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.demo{border:1px solid #dbe4eb;border-radius:14px;overflow:hidden;background:#fff}.demo img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.demo-body{padding:19px}.demo h3{margin:0 0 7px}.demo p{margin:0;color:#6a7e8e;font-size:13px;line-height:1.5}
 .contact{background:#061725;color:#fff}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:30px}.contact h2{font-size:42px;margin:8px 0 12px}.contact p{color:#b9cbd8;line-height:1.6;max-width:730px}.footer{background:#020b15;color:#b8c8d3;padding:48px 0}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:35px}.footer h3{color:#fff;font-size:14px}.footer p{font-size:12px;line-height:1.7}.copyright{margin-top:30px;padding-top:18px;border-top:1px solid #183047;font-size:11px}
+
+.service{cursor:pointer;display:block;color:#fff;transition:transform .22s,border-color .22s,background .22s}
+.service:hover{transform:translateY(-4px);border-color:#0ba8ef;background:#08243a}
+.service:focus-visible{outline:2px solid #16c8ff;outline-offset:-2px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.detail-card{position:relative;overflow:hidden;min-height:220px;padding:28px;border:1px solid #dbe4eb;border-radius:14px;background:#fff}
+.detail-card h3{margin:8px 0 10px;font-size:25px}
+.detail-card p{color:#64798a;line-height:1.65;font-size:14px;margin:0}
+.detail-card .k{font-size:11px}
+.detail-card:target{border-color:#0b8fd8;box-shadow:0 12px 35px rgba(0,90,150,.12)}
+@media(max-width:650px){.detail-grid{grid-template-columns:1fr}}
 .wa svg{width:34px;height:34px;display:block}.wa{position:fixed;right:24px;bottom:24px;width:68px;height:68px;border-radius:50%;background:#20d66d;color:#fff;display:grid;place-items:center;z-index:50;box-shadow:0 8px 30px rgba(0,0,0,.35);border:4px solid #fff;font-size:31px;font-weight:900}.wa span{position:absolute;right:80px;white-space:nowrap;background:#06131f;color:#fff;padding:10px 13px;border-radius:7px;font-size:12px;opacity:0;transition:.2s}.wa:hover span{opacity:1}
 @media(max-width:1050px){.nav{gap:18px}.hero .wrap{grid-template-columns:1fr}.hero-list{display:none}.service-grid{grid-template-columns:repeat(3,1fr)}.proposal,.kronix{grid-template-columns:1fr}.demos{grid-template-columns:1fr}.contact-box{display:block}}
 @media(max-width:650px){.top{display:none}.header{top:0;height:70px}.logo{width:155px}.nav a:not(.cta){display:none}.hero,.hero .wrap{min-height:680px}.hero .wrap{padding-top:70px}.hero h1{font-size:40px}.buttons{flex-direction:column}.service-grid{grid-template-columns:1fr 1fr}.service{border-bottom:1px solid #19344b}.critical,.pillars{grid-template-columns:1fr}.section{padding:60px 0}.head h2,.proposal h2,.kronix h2,.contact h2{font-size:32px}.footer-grid{grid-template-columns:1fr}.wrap{width:calc(100% - 28px)}}
@@ -41,13 +52,25 @@
 </div></div></section>
 
 <section class="services" id="servicos"><div class="wrap service-grid">
-<article class="service" style="--bg:url('assets/network.jpg')"><div class="icon">▣</div><h3>CABEAMENTO<br>ESTRUTURADO</h3><p>Organização e performance.</p></article>
-<article class="service" style="--bg:url('assets/electric.jpg')"><div class="icon">ϟ</div><h3>ELÉTRICA<br>E AUTOMAÇÃO</h3><p>Instalação e controle.</p></article>
-<article class="service" style="--bg:url('assets/cctv.jpg')"><div class="icon">◉</div><h3>SEGURANÇA<br>ELETRÔNICA</h3><p>CFTV e integração.</p></article>
-<article class="service" style="--bg:url('assets/hvac.jpg')"><div class="icon">❄</div><h3>CLIMATIZAÇÃO</h3><p>Instalação e manutenção.</p></article>
-<article class="service" style="--bg:url('assets/industrial.jpg')"><div class="icon">▣</div><h3>UPS / NOBREAKS</h3><p>Proteção e continuidade.</p></article>
-<article class="service" style="--bg:url('assets/hvac.jpg')"><div class="icon">◌</div><h3>AR-CONDICIONADO<br>DE PRECISÃO</h3><p>Ambientes críticos.</p></article>
-</div></section>
+<a class="service" href="#cabeamento" style="--bg:url('assets/network.jpg')"><div class="icon">▣</div><h3>CABEAMENTO<br>ESTRUTURADO</h3><p>Organização e performance.</p></a>
+<a class="service" href="#eletrica" style="--bg:url('assets/electric.jpg')"><div class="icon">ϟ</div><h3>ELÉTRICA<br>E AUTOMAÇÃO</h3><p>Instalação e controle.</p></a>
+<a class="service" href="#seguranca" style="--bg:url('assets/cctv.jpg')"><div class="icon">◉</div><h3>SEGURANÇA<br>ELETRÔNICA</h3><p>CFTV e integração.</p></a>
+<a class="service" href="#climatizacao" style="--bg:url('assets/hvac.jpg')"><div class="icon">❄</div><h3>CLIMATIZAÇÃO</h3><p>Instalação e manutenção.</p></a>
+<a class="service" href="#missao-critica" style="--bg:url('assets/industrial.jpg')"><div class="icon">▣</div><h3>UPS / NOBREAKS</h3><p>Proteção e continuidade.</p></a>
+<a class="service" href="#climatizacao" style="--bg:url('assets/hvac.jpg')"><div class="icon">◌</div><h3>AR-CONDICIONADO<br>DE PRECISÃO</h3><p>Ambientes críticos.</p></a>
+</div>
+</section>
+
+<section class="section" id="detalhes-servicos">
+<div class="wrap">
+<div class="head"><div class="k">SOLUÇÕES INSEGCOM</div><h2>Infraestrutura pensada para cada operação.</h2><p>Escolha uma área para conhecer a abordagem da INSEGCOM.</p></div>
+<div class="detail-grid">
+<article class="detail-card" id="cabeamento"><div class="k">CABEAMENTO ESTRUTURADO</div><h3>Conectividade organizada.</h3><p>Infraestrutura de rede planejada para oferecer organização, desempenho e possibilidade de expansão conforme o projeto.</p></article>
+<article class="detail-card" id="eletrica"><div class="k">ELÉTRICA E AUTOMAÇÃO</div><h3>Energia e controle.</h3><p>Projetos, instalações e integração de soluções elétricas e de automação de acordo com as necessidades da operação.</p></article>
+<article class="detail-card" id="seguranca"><div class="k">SEGURANÇA ELETRÔNICA</div><h3>Proteção integrada.</h3><p>Soluções de segurança eletrônica e monitoramento projetadas para o ambiente e para o nível de proteção necessário.</p></article>
+<article class="detail-card" id="climatizacao"><div class="k">CLIMATIZAÇÃO</div><h3>Conforto e continuidade.</h3><p>Instalação, manutenção e soluções de climatização, com possibilidade de controle e automação conforme o projeto.</p></article>
+</div>
+</div>
 
 <section class="section" id="quem-somos"><div class="wrap"><div class="head"><div class="k">A INSEGCOM</div><h2>Projetamos soluções para o que realmente importa.</h2><p>A INSEGCOM projeta, instala e integra soluções para transformar infraestrutura em controle, organização e eficiência — com alto impacto visual e investimento inteligente.</p></div></div></section>
 
