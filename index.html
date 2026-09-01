@@ -1,1080 +1,150 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description"
-        content="INSEGCOM — Tecnologia, infraestrutura, conectividade, automação, segurança e soluções inteligentes.">
-
-    <meta name="theme-color" content="#071116">
-
-    <title>INSEGCOM | Tecnologia • Infraestrutura • Automação • Segurança</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="INSEGCOM - Tecnologia e infraestrutura, elétrica, automação, conectividade e segurança eletrônica.">
+<title>INSEGCOM | Tecnologia e Infraestrutura</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#07111f;color:#eaf2fb;line-height:1.6}
+a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:100;background:rgba(5,14,26,.95);border-bottom:1px solid #1b3048;backdrop-filter:blur(12px)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:30px}.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:42px;height:42px;border:1px solid #4aa3ff;border-radius:10px;display:grid;place-items:center;color:#4aa3ff;font-size:23px;font-weight:800}
+.brand b{color:#fff}.brand strong{color:#4aa3ff}.brand small{display:block;font-size:8px;letter-spacing:1.3px;color:#91a4b8}
+nav{display:flex;gap:24px;flex-wrap:wrap}nav a{font-size:12px;font-weight:700;color:#aebed0;letter-spacing:.7px}nav a:hover{color:#4aa3ff}
+section{padding:100px 0}.hero{min-height:720px;display:flex;align-items:center;background:radial-gradient(circle at 75% 40%,rgba(31,122,210,.18),transparent 38%),linear-gradient(135deg,#07111f,#091b30)}
+.hero-content{max-width:780px}.eyebrow,.section-title>span,.selection-label,.simulation-header>span,.kronix-concept span{color:#4aa3ff;font-size:12px;font-weight:800;letter-spacing:2px}
+h1{font-size:clamp(44px,6vw,76px);line-height:1.02;margin:18px 0 25px}h1 span{display:block;color:#4aa3ff}.hero p{max-width:720px;color:#aebed0;font-size:18px}
+.hero-actions{display:flex;gap:14px;margin-top:35px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;border:1px solid #4aa3ff;background:#1677c8;color:#fff;padding:14px 22px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.8px;cursor:pointer;transition:.2s}
+.button:hover{transform:translateY(-2px);background:#2191ec}.button.secondary{background:transparent;border-color:#38546f}.button:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.section-title{max-width:800px;margin-bottom:55px}.section-title h2{font-size:clamp(32px,4vw,50px);line-height:1.08;margin:12px 0 16px}.section-title p,.solutions p,.company-content p,.kronix-text p{color:#9eafc2}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.service-card{background:#0b1a2b;border:1px solid #1c334b;border-radius:14px;padding:30px;transition:.25s}.service-card:hover{border-color:#347fb9;transform:translateY(-4px)}
+.service-icon{color:#4aa3ff;font-weight:800;font-size:13px;margin-bottom:20px}.service-card h3{font-size:21px;margin-bottom:12px}.service-card p{color:#9eafc2;font-size:14px}.service-card ul{margin-top:18px;padding-left:18px;color:#b9c8d7;font-size:13px}
+.solutions{background:#091827}.solutions-content,.company-content{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:start}.solution-list{display:grid;gap:12px}.solution-list div{display:flex;gap:18px;align-items:center;padding:18px;background:#0d2034;border:1px solid #1c3853;border-radius:10px}.solution-list strong{color:#4aa3ff}
+.kronix-section{background:linear-gradient(180deg,#07111f,#061321)}.kronix-intro{max-width:760px;margin-bottom:35px}.kronix-intro h3{font-size:30px;margin-bottom:10px}.kronix-intro p{color:#9eafc2}
+.kronix-configurator{display:grid;grid-template-columns:1fr 330px;gap:25px}.kronix-module-area{position:relative;min-height:690px;border:1px solid #1b3853;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(38,132,214,.13),transparent 27%),#081827}
+.kronix-module{position:absolute;left:var(--x);top:var(--y);width:175px;min-height:92px;transform:translate(-50%,-50%);padding:14px;text-align:left;background:#0c2034;border:1px solid #274963;border-radius:12px;color:#eaf2fb;cursor:pointer;transition:.25s;z-index:5}
+.kronix-module:hover{border-color:#4aa3ff;transform:translate(-50%,-50%) scale(1.03)}.kronix-module.selected{border-color:#4aa3ff;background:#10304b;box-shadow:0 0 22px rgba(74,163,255,.22)}
+.module-number{display:block;color:#4aa3ff;font-size:10px;font-weight:800;margin-bottom:4px}.kronix-module strong{display:block;font-size:12px}.kronix-module small{display:block;color:#8299ad;font-size:10px;margin-top:4px}
+.kronix-connections{position:absolute;inset:0;z-index:2;pointer-events:none}.kronix-line{position:absolute;height:2px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(74,163,255,.8),rgba(74,163,255,.08));box-shadow:0 0 7px rgba(74,163,255,.45)}
+.kronix-brain{position:absolute;left:50%;top:50%;width:190px;height:190px;transform:translate(-50%,-50%);z-index:8;display:grid;place-items:center}.brain-ring{position:absolute;border:1px solid rgba(74,163,255,.45);border-radius:50%;animation:pulse 3s infinite}.ring-one{width:190px;height:190px}.ring-two{width:225px;height:225px;opacity:.4;animation-delay:1s}
+.brain-core{width:130px;height:130px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#0b2238;border:2px solid #4aa3ff;box-shadow:0 0 35px rgba(74,163,255,.3);position:relative}.brain-core span{font-size:8px;letter-spacing:1.5px;color:#8ba7bf}.brain-core strong{font-size:25px;color:#4aa3ff}.brain-core small{font-size:8px;color:#b8c9d8}
+@keyframes pulse{50%{transform:scale(1.06);opacity:.5}}
+.kronix-selection{background:#0b1c2e;border:1px solid #1c3853;border-radius:18px;padding:28px;display:flex;flex-direction:column}.kronix-selection h3{font-size:27px;margin:8px 0}.kronix-selection>p{font-size:13px;color:#91a5b9}
+.selection-counter{display:flex;align-items:baseline;gap:8px;margin:25px 0 15px;border-top:1px solid #203a53;border-bottom:1px solid #203a53;padding:17px 0}.selection-counter strong{font-size:35px;color:#4aa3ff}.selection-counter span{font-size:12px;color:#8ea2b5}
+.kronix-selected{display:grid;gap:7px;max-height:290px;overflow:auto}.empty-selection{font-size:12px;color:#71879b;padding:10px 0}.selected-module{display:flex;align-items:center;gap:9px;background:#0e263d;border-radius:7px;padding:9px;font-size:12px}.selected-module span{width:7px;height:7px;border-radius:50%;background:#4aa3ff;box-shadow:0 0 8px #4aa3ff}.kronix-actions{display:grid;gap:10px;margin-top:auto;padding-top:22px}
+.kronix-simulation{display:none;margin-top:35px;border:1px solid #23435f;border-radius:18px;background:#081827;overflow:hidden}.kronix-simulation.visible{display:block}.simulation-header{padding:35px 35px 20px}.simulation-header h3{font-size:30px;margin:8px 0}.simulation-header p{max-width:750px;color:#91a5b9;font-size:13px}
+.simulation-screen{margin:0 35px 30px;border:1px solid #23435f;border-radius:12px;background:#07131f;overflow:hidden}.simulation-top{display:flex;justify-content:space-between;padding:15px 18px;border-bottom:1px solid #1c3348;font-size:12px}.simulation-top strong{color:#4aa3ff}.simulation-top span{color:#65d89a}
+.simulation-body{padding:25px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px}.simulation-card{min-height:110px;padding:18px;background:#0b2033;border:1px solid #1c3850;border-radius:10px}.simulation-card.large{grid-column:span 2}.simulation-card span,.simulation-module-card small{display:block;color:#7690a5;font-size:9px;letter-spacing:1px}.simulation-card strong{display:block;margin:7px 0}.simulation-card small{color:#91a5b9}.simulation-modules{display:contents}
+.simulation-module-card{min-height:110px;padding:18px;background:#0d2840;border:1px solid #2a5c82;border-radius:10px;animation:appear .35s both}.simulation-module-card span{display:block;width:8px;height:8px;border-radius:50%;background:#4aa3ff;box-shadow:0 0 9px #4aa3ff;margin-bottom:12px}.simulation-module-card strong{font-size:13px;display:block}@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.simulation-bottom{text-align:center;padding:30px;border-top:1px solid #1c3348}.simulation-bottom p{color:#9eafc2;font-size:13px}.simulation-bottom strong{display:block;margin:4px 0 18px}
+.kronix-concept{margin-top:65px;padding:35px;border:1px solid #1c3853;border-radius:16px;display:grid;grid-template-columns:1fr 1fr;gap:45px;background:#0a1b2c}.kronix-concept h3{font-size:28px;line-height:1.15;margin-top:8px}.kronix-concept p{color:#9eafc2}.kronix-product-footer{padding-top:35px;text-align:center;color:#71879b}.kronix-product-footer strong{color:#4aa3ff;margin-right:10px}
+.contact{background:#091827}.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.contact-card{display:flex;gap:14px;align-items:center;padding:22px;background:#0d2034;border:1px solid #1d3850;border-radius:12px;transition:.2s}.contact-card:hover{border-color:#4aa3ff;transform:translateY(-3px)}.contact-icon{font-size:23px;color:#4aa3ff}.contact-card strong,.contact-card span{display:block}.contact-card strong{font-size:12px}.contact-card div span{font-size:11px;color:#8299ad}.contact-note{margin-top:25px;padding:22px;background:#0b1c2d;border-left:3px solid #4aa3ff}.contact-note>span{font-size:10px;color:#4aa3ff;font-weight:800;letter-spacing:1.5px}.contact-note p{color:#8fa3b7;font-size:12px;margin-top:5px}
+footer{border-top:1px solid #1b3048;background:#050d17}.footer-content{min-height:120px;display:flex;align-items:center;justify-content:space-between;gap:30px}.footer-content strong{font-size:20px}.footer-content p{font-size:11px;color:#71879b}.footer-links{display:flex;gap:22px;font-size:12px;color:#8ea2b5}.footer-bottom{text-align:center;padding:16px;border-top:1px solid #142638;color:#5e7387;font-size:10px}
+@media(max-width:900px){nav{gap:12px}.services-grid{grid-template-columns:repeat(2,1fr)}.kronix-configurator{grid-template-columns:1fr}.contact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.nav{align-items:flex-start;padding:15px 0}.nav nav{display:none}.hero{min-height:620px}.services-grid,.solutions-content,.company-content,.contact-grid,.kronix-concept{grid-template-columns:1fr}.kronix-module-area{min-height:720px}.kronix-module{width:145px}.simulation-body{grid-template-columns:1fr}.simulation-card.large{grid-column:auto}.simulation-screen{margin:0 18px 20px}.simulation-header{padding:25px 20px 15px}}
+</style>
 </head>
-
 <body>
 
-<header>
-
-    <div class="container nav">
-
-        <a class="brand" href="#inicio" aria-label="INSEGCOM - Início">
-
-            <span class="brand-icon">I</span>
-
-            <span class="brand-name">
-                <b>INSEG</b><strong>COM</strong>
-                <small>TECNOLOGIA • AUTOMAÇÃO • SEGURANÇA</small>
-            </span>
-
-        </a>
-
-
-        <nav aria-label="Navegação principal">
-
-            <a class="active" href="#inicio">INÍCIO</a>
-            <a href="#empresa">EMPRESA</a>
-            <a href="#servicos">SERVIÇOS</a>
-            <a href="#solucoes">SOLUÇÕES</a>
-            <a href="#kronix">KRONIX</a>
-            <a href="#contato">CONTATO</a>
-
-        </nav>
-
-    </div>
-
-</header>
-
+<header><div class="container nav">
+<a class="brand" href="#inicio"><span class="brand-icon">I</span><span><b>INSEG</b><strong>COM</strong><small>TECNOLOGIA E INFRAESTRUTURA</small></span></a>
+<nav><a class="active" href="#inicio">INÍCIO</a><a href="#servicos">SERVIÇOS</a><a href="#solucoes">SOLUÇÕES</a><a href="#kronix">KRONIX</a><a href="#empresa">EMPRESA</a><a href="#contato">CONTATO</a></nav>
+</div></header>
 
 <main>
-
-<!-- =====================================================
-     INÍCIO
-===================================================== -->
-
-<section id="inicio" class="hero">
-
-    <div class="container hero-container">
-
-        <div class="hero-content">
-
-            <span class="eyebrow">
-                TECNOLOGIA • INFRAESTRUTURA • AUTOMAÇÃO
-            </span>
-
-            <h1>
-                Infraestrutura que conecta.
-                <span>Tecnologia que transforma.</span>
-            </h1>
-
-            <p>
-                A INSEGCOM atua na implantação de infraestrutura,
-                conectividade, segurança e automação, integrando
-                tecnologia para criar soluções organizadas,
-                confiáveis e preparadas para evolução.
-            </p>
-
-            <div class="hero-actions">
-
-                <a href="#servicos" class="button">
-                    CONHEÇA NOSSOS SERVIÇOS
-                </a>
-
-                <a href="#contato" class="button secondary">
-                    FALE CONOSCO
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-panel">
-
-            <div class="hero-panel-head">
-                <span>INSEGCOM</span>
-                <strong>TECNOLOGIA INTEGRADA</strong>
-            </div>
-
-            <div class="hero-panel-grid">
-
-                <div class="hero-panel-item">
-                    <strong>01</strong>
-                    <span>INFRAESTRUTURA</span>
-                </div>
-
-                <div class="hero-panel-item">
-                    <strong>02</strong>
-                    <span>CONECTIVIDADE</span>
-                </div>
-
-                <div class="hero-panel-item">
-                    <strong>03</strong>
-                    <span>AUTOMAÇÃO</span>
-                </div>
-
-                <div class="hero-panel-item">
-                    <strong>04</strong>
-                    <span>SEGURANÇA</span>
-                </div>
-
-            </div>
-
-            <div class="hero-panel-footer">
-                PROJETO • INSTALAÇÃO • INTEGRAÇÃO • MONITORAMENTO
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     TRAJETÓRIA
-===================================================== -->
-
-<section id="empresa" class="history">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>INSEGCOM</span>
-
-            <h2>
-                Uma trajetória iniciada em 2013
-            </h2>
-
-            <p>
-                A INSEGCOM constrói sua trajetória na área de tecnologia
-                e infraestrutura, evoluindo junto às necessidades dos
-                ambientes e às transformações do mercado.
-            </p>
-
-        </div>
-
-
-        <div class="history-layout">
-
-            <div class="history-text">
-
-                <p>
-                    Ao longo dessa trajetória, a atuação passou a integrar
-                    diferentes áreas, incluindo infraestrutura elétrica,
-                    cabeamento estruturado, fibra óptica, segurança
-                    eletrônica, automação e sistemas de monitoramento.
-                </p>
-
-                <p>
-                    A proposta é unir execução técnica, organização e
-                    tecnologia para criar soluções que possam acompanhar
-                    novas necessidades e futuras expansões.
-                </p>
-
-            </div>
-
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-
-                    <strong>2013</strong>
-
-                    <div>
-                        <b>ORIGEM</b>
-                        <span>Início da trajetória da INSEGCOM.</span>
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <strong>01</strong>
-
-                    <div>
-                        <b>INFRAESTRUTURA</b>
-                        <span>Elétrica e infraestrutura tecnológica.</span>
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <strong>02</strong>
-
-                    <div>
-                        <b>CONECTIVIDADE</b>
-                        <span>Redes, cabeamento e fibra óptica.</span>
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <strong>03</strong>
-
-                    <div>
-                        <b>AUTOMAÇÃO</b>
-                        <span>Controle, supervisão e monitoramento.</span>
-                    </div>
-
-                </div>
-
-
-                <div class="timeline-item">
-
-                    <strong>04</strong>
-
-                    <div>
-                        <b>KRONIX</b>
-                        <span>Tecnologia própria e novas possibilidades.</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVIÇOS
-===================================================== -->
-
-<section id="servicos" class="services">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>O QUE FAZEMOS</span>
-
-            <h2>
-                Serviços e infraestrutura para diferentes necessidades
-            </h2>
-
-            <p>
-                Da infraestrutura física à integração dos sistemas,
-                a INSEGCOM reúne diferentes competências para atender
-                projetos residenciais, comerciais, corporativos e industriais.
-            </p>
-
-        </div>
-
-
-        <div class="services-grid">
-
-
-            <article class="service-card">
-
-                <div class="service-icon">01</div>
-
-                <h3>Cabeamento Estruturado</h3>
-
-                <p>
-                    Projeto, implantação, organização, identificação e
-                    certificação de sistemas de cabeamento estruturado
-                    para redes de dados e comunicação.
-                </p>
-
-                <ul>
-                    <li>Cabeamento metálico</li>
-                    <li>Categorias 5e, 6 e 6A</li>
-                    <li>Voz e dados</li>
-                    <li>Racks e patch panels</li>
-                    <li>Organização e identificação</li>
-                    <li>Certificação dos pontos</li>
-                    <li>Testes e diagnóstico</li>
-                    <li>Expansão e adequação</li>
-                </ul>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">02</div>
-
-                <h3>Fibra Óptica</h3>
-
-                <p>
-                    Implantação e manutenção de infraestrutura óptica
-                    para interligação de ambientes, equipamentos e redes
-                    de comunicação.
-                </p>
-
-                <ul>
-                    <li>Lançamento de fibra</li>
-                    <li>Fusão de fibra óptica</li>
-                    <li>Caixas de emenda</li>
-                    <li>DIOs</li>
-                    <li>Organização óptica</li>
-                    <li>Enlaces ópticos</li>
-                    <li>Testes e certificação</li>
-                    <li>Manutenção e expansão</li>
-                </ul>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">03</div>
-
-                <h3>Infraestrutura Elétrica</h3>
-
-                <p>
-                    Execução e adequação de infraestrutura elétrica
-                    associada a sistemas de tecnologia, automação,
-                    comunicação e segurança.
-                </p>
-
-                <ul>
-                    <li>Infraestrutura elétrica</li>
-                    <li>Distribuição e alimentação</li>
-                    <li>Circuitos para equipamentos</li>
-                    <li>Quadros e adequações</li>
-                    <li>Alimentação de sistemas</li>
-                    <li>Integração com tecnologia</li>
-                </ul>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">04</div>
-
-                <h3>Automação</h3>
-
-                <p>
-                    Desenvolvimento e implantação de soluções para
-                    controle, supervisão, monitoramento e integração
-                    de equipamentos e processos.
-                </p>
-
-                <ul>
-                    <li>Automação residencial</li>
-                    <li>Automação industrial</li>
-                    <li>Sensores e atuadores</li>
-                    <li>Controle e supervisão</li>
-                    <li>Monitoramento</li>
-                    <li>Interfaces e dashboards</li>
-                    <li>Integração de sistemas</li>
-                </ul>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">05</div>
-
-                <h3>CFTV e Segurança</h3>
-
-                <p>
-                    Sistemas de segurança eletrônica e monitoramento
-                    desenvolvidos de acordo com as características
-                    e necessidades de cada ambiente.
-                </p>
-
-                <ul>
-                    <li>Câmeras IP</li>
-                    <li>CFTV</li>
-                    <li>Gravação e armazenamento</li>
-                    <li>Sensores</li>
-                    <li>Alarmes</li>
-                    <li>Monitoramento</li>
-                    <li>Integração de dispositivos</li>
-                </ul>
-
-            </article>
-
-
-            <article class="service-card">
-
-                <div class="service-icon">06</div>
-
-                <h3>Infraestrutura de Tecnologia</h3>
-
-                <p>
-                    Planejamento e organização da infraestrutura necessária
-                    para redes, equipamentos, comunicação, automação,
-                    segurança e expansão tecnológica.
-                </p>
-
-                <ul>
-                    <li>Racks e infraestrutura</li>
-                    <li>Redes de comunicação</li>
-                    <li>Organização técnica</li>
-                    <li>Infraestrutura para equipamentos</li>
-                    <li>Integração</li>
-                    <li>Expansão de sistemas</li>
-                </ul>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SOLUÇÕES INTEGRADAS
-===================================================== -->
-
-<section id="solucoes" class="solutions">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>SOLUÇÕES INTEGRADAS</span>
-
-            <h2>
-                Diferentes sistemas trabalhando em conjunto
-            </h2>
-
-            <p>
-                Uma infraestrutura eficiente não termina na instalação.
-                Ela precisa permitir comunicação entre equipamentos,
-                sistemas de controle, segurança e monitoramento.
-            </p>
-
-        </div>
-
-
-        <div class="integration-flow">
-
-            <div class="integration-step">
-                <strong>01</strong>
-                <span>INFRAESTRUTURA</span>
-            </div>
-
-            <div class="integration-line"></div>
-
-            <div class="integration-step">
-                <strong>02</strong>
-                <span>CONECTIVIDADE</span>
-            </div>
-
-            <div class="integration-line"></div>
-
-            <div class="integration-step">
-                <strong>03</strong>
-                <span>ELÉTRICA</span>
-            </div>
-
-            <div class="integration-line"></div>
-
-            <div class="integration-step">
-                <strong>04</strong>
-                <span>SEGURANÇA</span>
-            </div>
-
-            <div class="integration-line"></div>
-
-            <div class="integration-step">
-                <strong>05</strong>
-                <span>AUTOMAÇÃO</span>
-            </div>
-
-            <div class="integration-line"></div>
-
-            <div class="integration-step highlight">
-                <strong>06</strong>
-                <span>MONITORAMENTO</span>
-            </div>
-
-        </div>
-
-
-        <div class="solutions-text">
-
-            <div>
-
-                <h3>
-                    Projeto, instalação e integração
-                </h3>
-
-                <p>
-                    A INSEGCOM pode atuar em diferentes etapas de um projeto,
-                    desde a infraestrutura física até a integração dos
-                    equipamentos e sistemas de controle.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <p>
-                    O objetivo é entregar uma estrutura organizada,
-                    documentada e preparada para manutenção, expansão
-                    e incorporação de novas tecnologias.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     ÁREAS DE ATUAÇÃO
-===================================================== -->
-
-<section id="atuacao" class="areas">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>ÁREAS DE ATUAÇÃO</span>
-
-            <h2>
-                Soluções para diferentes ambientes
-            </h2>
-
-            <p>
-                A experiência técnica pode ser aplicada a diferentes
-                tipos de ambientes, respeitando as características,
-                necessidades e objetivos de cada projeto.
-            </p>
-
-        </div>
-
-
-        <div class="areas-grid">
-
-
-            <article class="area-card">
-
-                <span>01</span>
-
-                <h3>Residencial</h3>
-
-                <p>
-                    Redes, infraestrutura tecnológica, automação,
-                    segurança e integração de equipamentos.
-                </p>
-
-            </article>
-
-
-            <article class="area-card">
-
-                <span>02</span>
-
-                <h3>Comercial</h3>
-
-                <p>
-                    Cabeamento, conectividade, fibra óptica, CFTV,
-                    elétrica e infraestrutura para equipamentos.
-                </p>
-
-            </article>
-
-
-            <article class="area-card">
-
-                <span>03</span>
-
-                <h3>Corporativo</h3>
-
-                <p>
-                    Redes, racks, fibra óptica, segurança, automação
-                    e integração de sistemas.
-                </p>
-
-            </article>
-
-
-            <article class="area-card">
-
-                <span>04</span>
-
-                <h3>Industrial</h3>
-
-                <p>
-                    Automação, comunicação, infraestrutura,
-                    monitoramento e integração de sistemas.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     KRONIX
-===================================================== -->
-
-<section id="kronix" class="kronix-section">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>TECNOLOGIA DESENVOLVIDA PELA INSEGCOM</span>
-
-            <h2>
-                KRONIX
-            </h2>
-
-            <p>
-                Do equipamento à experiência: uma plataforma para controle,
-                supervisão, monitoramento e interação com sistemas físicos.
-            </p>
-
-        </div>
-
-
-        <div class="kronix-intro">
-
-            <div class="kronix-copy">
-
-                <h3>
-                    Tecnologia que transforma dados em interação
-                </h3>
-
-                <p>
-                    O KRONIX permite desenvolver interfaces adaptadas
-                    à aplicação, reunindo comandos, estados, informações
-                    e monitoramento em uma experiência visual organizada.
-                </p>
-
-                <p>
-                    A proposta é aproximar o usuário dos sistemas físicos,
-                    tornando o controle mais intuitivo sem perder a
-                    capacidade técnica de supervisão.
-                </p>
-
-                <a href="#contato" class="button">
-                    CONHEÇA O KRONIX
-                </a>
-
-            </div>
-
-
-            <div class="kronix-map">
-
-                <div class="kronix-node active">
-                    <strong>KRONIX</strong>
-                    <span>PLATAFORMA</span>
-                </div>
-
-                <div class="kronix-connector"></div>
-
-                <div class="kronix-node">
-                    <strong>PREDIAL</strong>
-                    <span>CONTROLE</span>
-                </div>
-
-                <div class="kronix-connector"></div>
-
-                <div class="kronix-node">
-                    <strong>INDUSTRIAL</strong>
-                    <span>SUPERVISÃO</span>
-                </div>
-
-                <div class="kronix-connector"></div>
-
-                <div class="kronix-node">
-                    <strong>VEICULAR</strong>
-                    <span>INTERAÇÃO</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="kronix-products">
-
-
-            <article class="kronix-product">
-
-                <span>KRONIX PREDIAL</span>
-
-                <h3>
-                    Controle e supervisão de ambientes
-                </h3>
-
-                <p>
-                    Interfaces para acompanhamento de equipamentos,
-                    sensores, estados e comandos de sistemas prediais.
-                </p>
-
-            </article>
-
-
-            <article class="kronix-product">
-
-                <span>KRONIX INDUSTRIAL</span>
-
-                <h3>
-                    Automação, monitoramento e integração
-                </h3>
-
-                <p>
-                    Uma abordagem visual para acompanhar processos,
-                    equipamentos e informações importantes da operação.
-                </p>
-
-            </article>
-
-
-            <article class="kronix-product vehicle">
-
-                <span>KRONIX VEICULAR</span>
-
-                <h3>
-                    Uma nova experiência visual para o veículo
-                </h3>
-
-                <p>
-                    A interface permite identificar visualmente os
-                    componentes do veículo e interagir com os sistemas
-                    de forma intuitiva.
-                </p>
-
-                <div class="kronix-demo">
-
-                    <img
-                        src="assets/kronix-veicular.png"
-                        alt="Interface visual do KRONIX Veicular"
-                        loading="lazy"
-                    >
-
-                    <div class="demo-caption">
-                        KRONIX VEICULAR • INTERFACE DE CONTROLE E MONITORAMENTO
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     COMO TRABALHAMOS
-===================================================== -->
-
-<section class="process">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>COMO TRABALHAMOS</span>
-
-            <h2>
-                Organização em cada etapa do projeto
-            </h2>
-
-            <p>
-                Uma execução bem planejada facilita a instalação,
-                a manutenção e a evolução da infraestrutura.
-            </p>
-
-        </div>
-
-
-        <div class="process-grid">
-
-
-            <article class="process-card">
-
-                <strong>01</strong>
-
-                <h3>Entendimento</h3>
-
-                <p>
-                    Análise da necessidade, ambiente e objetivos
-                    do projeto.
-                </p>
-
-            </article>
-
-
-            <article class="process-card">
-
-                <strong>02</strong>
-
-                <h3>Planejamento</h3>
-
-                <p>
-                    Definição da infraestrutura, equipamentos e
-                    solução adequada.
-                </p>
-
-            </article>
-
-
-            <article class="process-card">
-
-                <strong>03</strong>
-
-                <h3>Execução</h3>
-
-                <p>
-                    Instalação, organização e integração dos
-                    sistemas envolvidos.
-                </p>
-
-            </article>
-
-
-            <article class="process-card">
-
-                <strong>04</strong>
-
-                <h3>Testes</h3>
-
-                <p>
-                    Verificação do funcionamento e da qualidade
-                    da instalação.
-                </p>
-
-            </article>
-
-
-            <article class="process-card">
-
-                <strong>05</strong>
-
-                <h3>Entrega</h3>
-
-                <p>
-                    Organização, identificação e documentação
-                    quando aplicável.
-                </p>
-
-            </article>
-
-
-            <article class="process-card">
-
-                <strong>06</strong>
-
-                <h3>Evolução</h3>
-
-                <p>
-                    Estrutura preparada para manutenção e futuras
-                    expansões.
-                </p>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTATO
-===================================================== -->
-
-<section id="contato" class="contact">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <span>FALE COM A INSEGCOM</span>
-
-            <h2>
-                Vamos conversar sobre seu projeto
-            </h2>
-
-            <p>
-                Entre em contato para conhecer nossas soluções,
-                solicitar uma proposta ou obter suporte técnico.
-            </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-            <a
-                class="contact-card"
-                href="mailto:contato@insegcom.com.br"
-            >
-
-                <span class="contact-icon">✉</span>
-
-                <div>
-                    <strong>CONTATO</strong>
-                    <span>contato@insegcom.com.br</span>
-                </div>
-
-            </a>
-
-
-            <a
-                class="contact-card"
-                href="mailto:comercial@insegcom.com.br"
-            >
-
-                <span class="contact-icon">✉</span>
-
-                <div>
-                    <strong>COMERCIAL</strong>
-                    <span>comercial@insegcom.com.br</span>
-                </div>
-
-            </a>
-
-
-            <a
-                class="contact-card"
-                href="mailto:orcamentos@insegcom.com.br"
-            >
-
-                <span class="contact-icon">✉</span>
-
-                <div>
-                    <strong>ORÇAMENTOS</strong>
-                    <span>orcamentos@insegcom.com.br</span>
-                </div>
-
-            </a>
-
-
-            <a
-                class="contact-card whatsapp"
-                href="https://wa.me/5511954043842"
-                target="_blank"
-                rel="noopener"
-            >
-
-                <span class="contact-icon">◉</span>
-
-                <div>
-                    <strong>SUPORTE / WHATSAPP</strong>
-                    <span>Fale diretamente com o suporte INSEGCOM</span>
-                </div>
-
-            </a>
-
-
-            <a
-                class="contact-card"
-                href="mailto:suporte@insegcom.com.br"
-            >
-
-                <span class="contact-icon">✉</span>
-
-                <div>
-                    <strong>SUPORTE POR E-MAIL</strong>
-                    <span>suporte@insegcom.com.br</span>
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <div class="contact-note">
-
-            <span>ATENDIMENTO</span>
-
-            <p>
-                Para novos projetos e propostas, utilize comercial ou
-                orçamentos. Para assuntos técnicos, utilize o canal
-                de suporte ou o WhatsApp.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
+<section id="inicio" class="hero"><div class="container"><div class="hero-content">
+<span class="eyebrow">TECNOLOGIA • INFRAESTRUTURA • AUTOMAÇÃO</span>
+<h1>Infraestrutura que conecta.<span>Tecnologia que transforma.</span></h1>
+<p>A INSEGCOM atua no desenvolvimento, instalação e manutenção de soluções em tecnologia e infraestrutura, integrando elétrica, conectividade, automação e segurança eletrônica.</p>
+<div class="hero-actions"><a href="#servicos" class="button">CONHEÇA NOSSOS SERVIÇOS</a><a href="#contato" class="button secondary">FALE CONOSCO</a></div>
+</div></div></section>
+
+<section id="servicos"><div class="container">
+<div class="section-title"><span>O QUE FAZEMOS</span><h2>Soluções completas em tecnologia e infraestrutura</h2><p>Da infraestrutura física à automação e segurança eletrônica, a INSEGCOM integra diferentes áreas para entregar sistemas organizados, confiáveis e preparados para futuras expansões.</p></div>
+<div class="services-grid">
+<article class="service-card"><div class="service-icon">01</div><h3>Cabeamento Estruturado</h3><p>Implantação de redes de dados e voz com planejamento, organização e identificação da infraestrutura.</p><ul><li>Redes de dados</li><li>Organização de racks</li><li>Patch panels e identificação</li><li>Certificação do cabeamento</li></ul></article>
+<article class="service-card"><div class="service-icon">02</div><h3>Fibra Óptica</h3><p>Infraestrutura óptica para enlaces de alta velocidade e longas distâncias, incluindo instalação, organização e manutenção.</p><ul><li>Fusão de fibra óptica</li><li>DIOs e caixas ópticas</li><li>Enlaces ópticos</li><li>Expansão de infraestrutura</li></ul></article>
+<article class="service-card"><div class="service-icon">03</div><h3>Elétrica</h3><p>Instalação e adequação de infraestrutura elétrica associada à tecnologia, automação, comunicação e segurança.</p><ul><li>Infraestrutura elétrica</li><li>Distribuição e alimentação</li><li>Adequações</li><li>Integração com automação</li></ul></article>
+<article class="service-card"><div class="service-icon">04</div><h3>Automação</h3><p>Desenvolvimento de soluções para controle, integração e visualização de equipamentos e processos.</p><ul><li>Residencial</li><li>Comercial e industrial</li><li>Controle e integração</li><li>Interfaces e dashboards</li></ul></article>
+<article class="service-card"><div class="service-icon">05</div><h3>Segurança Eletrônica</h3><p>Instalação e manutenção de sistemas eletrônicos destinados à proteção, controle e gestão de ambientes.</p><ul><li>CFTV</li><li>Controle de acesso</li><li>Alarme de intrusão</li><li>Alarme de incêndio</li></ul></article>
+<article class="service-card"><div class="service-icon">06</div><h3>Infraestrutura de Tecnologia</h3><p>Planejamento e organização da infraestrutura necessária para equipamentos, redes, comunicação e expansão tecnológica.</p><ul><li>Racks e infraestrutura</li><li>Redes de comunicação</li><li>Organização técnica</li><li>Expansão de sistemas</li></ul></article>
+</div></div></section>
+
+<section id="solucoes" class="solutions"><div class="container">
+<div class="section-title"><span>SOLUÇÕES INTEGRADAS</span><h2>Tecnologia trabalhando em conjunto</h2><p>A infraestrutura deixa de ser apenas um conjunto de equipamentos quando os sistemas conseguem trabalhar de forma integrada.</p></div>
+<div class="solutions-content"><div><h3>Projeto, instalação e integração</h3><p>A INSEGCOM pode atuar desde a infraestrutura física até a integração dos equipamentos e sistemas de controle.</p><p>O objetivo é criar uma infraestrutura organizada, documentada e preparada para receber novas tecnologias sem a necessidade de refazer todo o sistema.</p></div>
+<div class="solution-list"><div><strong>01</strong><span>Infraestrutura</span></div><div><strong>02</strong><span>Conectividade</span></div><div><strong>03</strong><span>Automação</span></div><div><strong>04</strong><span>Segurança Eletrônica</span></div></div></div>
+</div></section>
+
+<section id="kronix" class="kronix-section"><div class="container">
+<div class="section-title"><span>PRODUTO INSEGCOM</span><h2>KRONIX</h2><p>Uma plataforma modular desenvolvida para integrar tecnologia, automação, infraestrutura e segurança em uma experiência visual de controle.</p></div>
+<div class="kronix-intro"><h3>Um cérebro. Diferentes possibilidades.</h3><p>Escolha os recursos que fazem sentido para sua aplicação e visualize como eles podem trabalhar integrados.</p></div>
+<div class="kronix-configurator">
+<div class="kronix-module-area">
+<button class="kronix-module" data-module="Elétrica" style="--x:8%;--y:18%"><span class="module-number">01</span><strong>ELÉTRICA</strong><small>Infraestrutura e alimentação</small></button>
+<button class="kronix-module" data-module="Iluminação" style="--x:38%;--y:5%"><span class="module-number">02</span><strong>ILUMINAÇÃO</strong><small>Controle e automação</small></button>
+<button class="kronix-module" data-module="Climatização" style="--x:67%;--y:15%"><span class="module-number">03</span><strong>CLIMATIZAÇÃO</strong><small>HVAC e conforto</small></button>
+<button class="kronix-module" data-module="Controle de Acesso" style="--x:78%;--y:47%"><span class="module-number">04</span><strong>CONTROLE DE ACESSO</strong><small>Gerenciamento eletrônico</small></button>
+<button class="kronix-module" data-module="CFTV" style="--x:63%;--y:78%"><span class="module-number">05</span><strong>CFTV</strong><small>Vídeo e segurança</small></button>
+<button class="kronix-module" data-module="Alarme de Intrusão" style="--x:36%;--y:87%"><span class="module-number">06</span><strong>ALARME DE INTRUSÃO</strong><small>Detecção e proteção</small></button>
+<button class="kronix-module" data-module="Alarme de Incêndio" style="--x:7%;--y:72%"><span class="module-number">07</span><strong>ALARME DE INCÊNDIO</strong><small>Detecção e sinalização</small></button>
+<button class="kronix-module" data-module="Energia" style="--x:1%;--y:45%"><span class="module-number">08</span><strong>ENERGIA</strong><small>Dados e consumo</small></button>
+<button class="kronix-module" data-module="Sensores" style="--x:24%;--y:47%"><span class="module-number">09</span><strong>SENSORES</strong><small>Informações do ambiente</small></button>
+<button class="kronix-module" data-module="Veicular" style="--x:72%;--y:57%"><span class="module-number">10</span><strong>VEICULAR</strong><small>Integração e telemetria</small></button>
+<div class="kronix-connections"></div>
+<div class="kronix-brain"><div class="brain-ring ring-one"></div><div class="brain-ring ring-two"></div><div class="brain-core"><span>INSEGCOM</span><strong>KRONIX</strong><small>CÉREBRO DA SOLUÇÃO</small></div></div>
+</div>
+<aside class="kronix-selection"><span class="selection-label">CONFIGURADOR KRONIX</span><h3>Monte sua solução</h3><p>Selecione os módulos que deseja conhecer. Eles serão conectados ao cérebro KRONIX.</p>
+<div class="selection-counter"><strong id="kronix-count">0</strong><span>módulos selecionados</span></div>
+<div id="kronix-selected" class="kronix-selected"><div class="empty-selection">Nenhum módulo selecionado.</div></div>
+<div class="kronix-actions"><button type="button" id="kronix-simulate" class="button" disabled>VER SIMULAÇÃO</button><button type="button" id="kronix-budget" class="button secondary" disabled>PEDIR SEU ORÇAMENTO</button></div></aside>
+</div>
+
+<div id="kronix-simulation" class="kronix-simulation">
+<div class="simulation-header"><span>SIMULAÇÃO DE REFERÊNCIA</span><h3>Visualize uma possibilidade para sua solução</h3><p>Esta demonstração apresenta possibilidades de integração do KRONIX. A configuração final é definida de acordo com as características de cada projeto.</p></div>
+<div class="simulation-screen"><div class="simulation-top"><strong>KRONIX</strong><span>SISTEMA ONLINE</span></div>
+<div class="simulation-body"><div class="simulation-card large"><span>SISTEMA</span><strong>INTEGRAÇÃO KRONIX</strong><small>Solução configurada pelo usuário</small></div><div id="simulation-modules" class="simulation-modules"></div><div class="simulation-card"><span>STATUS</span><strong>OPERACIONAL</strong><small>Comunicação estabelecida</small></div></div></div>
+<div class="simulation-bottom"><p>Gostou dessa configuração?</p><strong>Solicite uma proposta personalizada da INSEGCOM.</strong><button type="button" id="kronix-budget-simulation" class="button">PEDIR SEU ORÇAMENTO</button></div>
+</div>
+
+<div class="kronix-concept"><div><span>CONCEITO KRONIX</span><h3>Comece com o necessário. Expanda quando precisar.</h3></div><p>O KRONIX foi pensado como uma arquitetura modular. Diferentes recursos podem ser incorporados de acordo com as necessidades de cada projeto, permitindo que a solução evolua junto com o ambiente.</p></div>
+<div class="kronix-product-footer"><strong>KRONIX</strong><span>Um produto desenvolvido pela INSEGCOM.</span></div>
+</div></section>
+
+<section id="empresa"><div class="container"><div class="section-title"><span>INSEGCOM</span><h2>Tecnologia aplicada à realidade</h2><p>Uma trajetória construída desde 2013, unindo experiência técnica, infraestrutura e tecnologia.</p></div>
+<div class="company-content"><div><p>A INSEGCOM atua na área de tecnologia, infraestrutura, automação e segurança eletrônica, desenvolvendo soluções de acordo com as necessidades de cada projeto.</p><p>Nosso trabalho envolve desde a implantação da infraestrutura necessária para uma rede até sistemas de automação e integração capazes de transformar dados em informações úteis para o usuário.</p><p>Buscamos unir instalação técnica, organização, confiabilidade e tecnologia para criar soluções preparadas para acompanhar a evolução dos ambientes.</p></div>
+<div class="company-highlights"><div><strong>INFRAESTRUTURA</strong><span>Redes e sistemas organizados</span></div><div><strong>ELÉTRICA</strong><span>Alimentação e adequação técnica</span></div><div><strong>AUTOMAÇÃO</strong><span>Controle e integração</span></div><div><strong>SEGURANÇA</strong><span>Proteção e controle eletrônico</span></div></div></div></div></section>
+
+<section id="contato" class="contact"><div class="container"><div class="section-title"><span>FALE COM A INSEGCOM</span><h2>Vamos conversar sobre seu projeto</h2><p>Entre em contato com a INSEGCOM para conhecer nossas soluções, solicitar uma proposta ou obter suporte técnico.</p></div>
+<div class="contact-grid"><a class="contact-card" href="mailto:comercial@insegcom.com.br"><span class="contact-icon">✉</span><div><strong>COMERCIAL</strong><span>Informações sobre produtos e serviços</span></div></a><a class="contact-card" href="mailto:orcamentos@insegcom.com.br"><span class="contact-icon">✉</span><div><strong>ORÇAMENTOS</strong><span>Solicite uma proposta para seu projeto</span></div></a><a class="contact-card" href="mailto:suporte@insegcom.com.br"><span class="contact-icon">✉</span><div><strong>SUPORTE</strong><span>Atendimento técnico por e-mail</span></div></a><a class="contact-card" href="https://wa.me/5511954043842" target="_blank" rel="noopener"><span class="contact-icon">◉</span><div><strong>WHATSAPP</strong><span>Suporte INSEGCOM</span></div></a></div>
+<div class="contact-note"><span>ATENDIMENTO</span><p>Para novos projetos, informações comerciais e solicitações de orçamento, utilize os canais correspondentes acima. Para assuntos técnicos, utilize o canal de suporte.</p></div></div></section>
 </main>
 
+<footer><div class="container footer-content"><div><strong>INSEGCOM</strong><p>Tecnologia e Infraestrutura</p></div><div class="footer-links"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#kronix">KRONIX</a><a href="#contato">Contato</a></div></div><div class="footer-bottom">© 2026 INSEGCOM. Todos os direitos reservados.</div></footer>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const modules=[...document.querySelectorAll(".kronix-module")],count=document.getElementById("kronix-count"),selected=document.getElementById("kronix-selected"),simulate=document.getElementById("kronix-simulate"),budget=document.getElementById("kronix-budget"),simBudget=document.getElementById("kronix-budget-simulation"),simulation=document.getElementById("kronix-simulation"),simModules=document.getElementById("simulation-modules"),connections=document.querySelector(".kronix-connections");let chosen=[];
+function update(){count.textContent=chosen.length;selected.innerHTML="";if(!chosen.length){selected.innerHTML='<div class="empty-selection">Nenhum módulo selecionado.</div>';simulate.disabled=true;budget.disabled=true;connections.innerHTML="";return}chosen.forEach(name=>{const item=document.createElement("div");item.className="selected-module";item.innerHTML=`<span></span><strong>${name}</strong>`;selected.appendChild(item)});simulate.disabled=false;budget.disabled=false;drawLines()}
+modules.forEach(m=>m.addEventListener("click",()=>{const name=m.dataset.module;if(chosen.includes(name)){chosen=chosen.filter(x=>x!==name);m.classList.remove("selected")}else{chosen.push(name);m.classList.add("selected")}update()}));
+function drawLines(){connections.innerHTML="";const area=document.querySelector(".kronix-module-area"),brain=document.querySelector(".kronix-brain"),ar=area.getBoundingClientRect(),br=brain.getBoundingClientRect(),bx=br.left-ar.left+br.width/2,by=br.top-ar.top+br.height/2;chosen.forEach(name=>{const m=modules.find(x=>x.dataset.module===name);if(!m)return;const mr=m.getBoundingClientRect(),mx=mr.left-ar.left+mr.width/2,my=mr.top-ar.top+mr.height/2,dx=mx-bx,dy=my-by,dist=Math.hypot(dx,dy),angle=Math.atan2(dy,dx)*180/Math.PI,line=document.createElement("div");line.className="kronix-line";line.style.width=dist+"px";line.style.left=bx+"px";line.style.top=by+"px";line.style.transform=`rotate(${angle}deg)`;connections.appendChild(line)})}
+simulate.addEventListener("click",()=>{simModules.innerHTML="";chosen.forEach((name,i)=>{const c=document.createElement("div");c.className="simulation-module-card";c.style.animationDelay=(i*.07)+"s";c.innerHTML=`<span></span><strong>${name}</strong><small>Módulo integrado ao KRONIX</small>`;simModules.appendChild(c)});simulation.classList.add("visible");setTimeout(()=>simulation.scrollIntoView({behavior:"smooth",block:"start"}),80)});
+function requestBudget(){if(!chosen.length)return;const list=chosen.map(x=>"- "+x).join("\n"),subject=encodeURIComponent("Solicitação de orçamento — KRONIX"),body=encodeURIComponent(`Olá, INSEGCOM.
 
-<footer>
+Tenho interesse em uma solução KRONIX.
 
-    <div class="container footer-content">
+Módulos selecionados:
+${list}
 
-        <div class="footer-brand">
+Gostaria de receber uma proposta e uma prévia conceitual da interface para o meu projeto.
 
-            <strong>INSEGCOM</strong>
-
-            <p>
-                Tecnologia • Automação • Segurança • Infraestrutura
-            </p>
-
-            <span>
-                Uma trajetória iniciada em 2013.
-            </span>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#inicio">Início</a>
-            <a href="#empresa">Empresa</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#solucoes">Soluções</a>
-            <a href="#kronix">KRONIX</a>
-            <a href="#contato">Contato</a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <div class="container">
-
-            © 2026 INSEGCOM. Todos os direitos reservados.
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-</body>
-
+Informações adicionais:
+`);location.href=`mailto:orcamentos@insegcom.com.br?subject=${subject}&body=${body}`}
+budget.addEventListener("click",requestBudget);simBudget.addEventListener("click",requestBudget);window.addEventListener("resize",()=>{if(chosen.length)drawLines()});
+});
+</script>
+<section id="videos" style="max-width:1180px;margin:80px auto;padding:0 20px"><div style="color:#4aa3ff;font-size:12px;font-weight:800;letter-spacing:2px">EXEMPLOS DE APLICAÇÃO</div><h2 style="font-size:42px;margin:12px 0">Veja o que o KRONIX pode integrar</h2><p style="color:#9eafc2">Cinco demonstrações para dar um norte ao projeto. A solução final é definida de acordo com a necessidade do cliente.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:30px"><article style="min-height:230px;padding:22px;text-align:left;border:1px solid #23445f;border-radius:14px;background:#0b1c2d;display:flex;flex-direction:column;justify-content:end"><div style="color:#4aa3ff;font-size:9px;font-weight:800;letter-spacing:1.5px">KRONIX 01</div><strong style="font-size:19px;margin:7px 0">PREDIAL</strong><small style="color:#8299ad;line-height:1.5">Energia • Iluminação • Sensores • Automação</small><div style="margin-top:18px;color:#4aa3ff;font-size:9px;font-weight:800">VÍDEO DE DEMONSTRAÇÃO</div></article><article style="min-height:230px;padding:22px;text-align:left;border:1px solid #23445f;border-radius:14px;background:#0b1c2d;display:flex;flex-direction:column;justify-content:end"><div style="color:#4aa3ff;font-size:9px;font-weight:800;letter-spacing:1.5px">KRONIX 02</div><strong style="font-size:19px;margin:7px 0">CLIMATIZAÇÃO</strong><small style="color:#8299ad;line-height:1.5">Temperatura • Revezamento • Controle</small><div style="margin-top:18px;color:#4aa3ff;font-size:9px;font-weight:800">VÍDEO DE DEMONSTRAÇÃO</div></article><article style="min-height:230px;padding:22px;text-align:left;border:1px solid #23445f;border-radius:14px;background:#0b1c2d;display:flex;flex-direction:column;justify-content:end"><div style="color:#4aa3ff;font-size:9px;font-weight:800;letter-spacing:1.5px">KRONIX 03</div><strong style="font-size:19px;margin:7px 0">SEGURANÇA</strong><small style="color:#8299ad;line-height:1.5">CFTV • Acesso • Intrusão • Incêndio</small><div style="margin-top:18px;color:#4aa3ff;font-size:9px;font-weight:800">VÍDEO DE DEMONSTRAÇÃO</div></article><article style="min-height:230px;padding:22px;text-align:left;border:1px solid #23445f;border-radius:14px;background:#0b1c2d;display:flex;flex-direction:column;justify-content:end"><div style="color:#4aa3ff;font-size:9px;font-weight:800;letter-spacing:1.5px">KRONIX 04</div><strong style="font-size:19px;margin:7px 0">INDUSTRIAL</strong><small style="color:#8299ad;line-height:1.5">Máquinas • Sensores • Automação • Supervisão</small><div style="margin-top:18px;color:#4aa3ff;font-size:9px;font-weight:800">VÍDEO DE DEMONSTRAÇÃO</div></article><article style="min-height:230px;padding:22px;text-align:left;border:1px solid #23445f;border-radius:14px;background:#0b1c2d;display:flex;flex-direction:column;justify-content:end"><div style="color:#4aa3ff;font-size:9px;font-weight:800;letter-spacing:1.5px">KRONIX 05</div><strong style="font-size:19px;margin:7px 0">VEICULAR</strong><small style="color:#8299ad;line-height:1.5">Telemetria • Sensores • Integração</small><div style="margin-top:18px;color:#4aa3ff;font-size:9px;font-weight:800">VÍDEO DE DEMONSTRAÇÃO</div></article></div><p style="margin-top:20px;color:#8299ad;font-size:11px"><b style="color:#dce9f5">As demonstrações são referências.</b> O projeto final é desenvolvido conforme a necessidade real do cliente.</p></section></body>
 </html>
