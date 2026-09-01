@@ -65,7 +65,7 @@
 }
 </style>
 
-</head>
+<style>#hero-interativo:before{background-image:linear-gradient(90deg,rgba(2,8,14,.98),rgba(2,8,14,.86) 34%,rgba(2,8,14,.38) 68%,rgba(2,8,14,.76)),var(--hero-image)}</style></head>
 <body>
 <div class="top"><div class="wrap"><span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span><span>☎ (11) 95404-3842 &nbsp; | &nbsp; ✉ comercial@insegcom.com.br</span></div></div>
 <header class="header"><div class="wrap">
@@ -159,9 +159,16 @@
 </svg></a>
 
 <script>
-(() => {
+document.addEventListener('DOMContentLoaded', function () {
   const root = document.getElementById('hero-interativo');
   if (!root) return;
+
+  const content = document.getElementById('hero-content');
+  const label = document.getElementById('hero-label');
+  const title = document.getElementById('hero-title');
+  const text = document.getElementById('hero-text');
+  const link = document.getElementById('hero-link');
+  const items = Array.from(root.querySelectorAll('.hero-item'));
 
   const slides = [
     {
@@ -170,7 +177,7 @@
       text: 'Redes organizadas e infraestrutura preparada para crescer.',
       link: '#servicos',
       button: 'CONHEÇA A SOLUÇÃO →',
-      bg: "assets/fundo-cabeamento.jpg"
+      bg: 'assets/fundo-cabeamento.jpg'
     },
     {
       label: 'SEGURANÇA ELETRÔNICA',
@@ -178,7 +185,7 @@
       text: 'CFTV, controle de acesso e soluções integradas para proteger pessoas, ambientes e operações.',
       link: '#servicos',
       button: 'CONHEÇA A SOLUÇÃO →',
-      bg: "assets/fundo-eletrica.jpg"
+      bg: 'assets/fundo-eletrica.jpg'
     },
     {
       label: 'ELÉTRICA E AUTOMAÇÃO',
@@ -186,7 +193,7 @@
       text: 'Projetos, instalações e automação inteligente aplicados à realidade de cada operação.',
       link: '#servicos',
       button: 'CONHEÇA A SOLUÇÃO →',
-      bg: "assets/fundo-eletrica.jpg"
+      bg: 'assets/fundo-eletrica.jpg'
     },
     {
       label: 'CLIMATIZAÇÃO E MISSÃO CRÍTICA',
@@ -194,81 +201,63 @@
       text: 'Climatização, UPS e infraestrutura pensadas para ambientes que exigem segurança e continuidade.',
       link: '#missao-critica',
       button: 'CONHEÇA A SOLUÇÃO →',
-      bg: "assets/fundo-climatizacao.jpg"
+      bg: 'assets/fundo-climatizacao.jpg'
     }
   ];
 
-  const content = root.querySelector('#hero-content');
-  const label = root.querySelector('#hero-label');
-  const title = root.querySelector('#hero-title');
-  const text = root.querySelector('#hero-text');
-  const link = root.querySelector('#hero-link');
-  const items = [...root.querySelectorAll('.hero-item')];
   let current = 0;
   let timer = null;
+  const interval = 5000;
 
-  function setSlide(index, userAction = false) {
+  // The pseudo-element uses this CSS variable for the active image.
+  root.style.setProperty('--hero-image', 'url("' + slides[0].bg + '")');
+
+  function showSlide(index, manual) {
     current = (index + slides.length) % slides.length;
     const s = slides[current];
-
-    content.classList.remove('hero-fade');
-    void content.offsetWidth;
-    content.classList.add('hero-fade');
 
     label.textContent = s.label;
     title.innerHTML = s.title;
     text.textContent = s.text;
     link.href = s.link;
     link.textContent = s.button;
+    root.style.setProperty('--hero-image', 'url("' + s.bg + '")');
 
-    root.style.setProperty('--hero-bg', `url("${s.bg}")`);
-    const style = getComputedStyle(root, '::before').backgroundImage;
-    if (style) {
-      // Reapply the existing dark treatment while changing only the image.
-      root.style.setProperty('--hero-current-bg', `url("${s.bg}")`);
-      root.querySelector('.hero-copy')?.focus?.();
-    }
+    content.classList.remove('hero-fade');
+    void content.offsetWidth;
+    content.classList.add('hero-fade');
 
-    items.forEach((item, i) => {
+    items.forEach(function(item, i) {
       const active = i === current;
       item.classList.toggle('is-active', active);
-      const btn = item.querySelector('button');
-      btn.setAttribute('aria-current', active ? 'true' : 'false');
+      const button = item.querySelector('button');
+      if (button) button.setAttribute('aria-current', active ? 'true' : 'false');
     });
 
-    if (userAction) restart();
+    if (manual) startAuto();
   }
 
-  // Inline style is used here so the original hero overlay remains intact.
-  function applyBackground() {
-    const bg = slides[current].bg;
-    root.style.setProperty('--hero-image', `url("${bg}")`);
-  }
-
-  const styleTag = document.createElement('style');
-  styleTag.textContent = '#hero-interativo:before{background-image:linear-gradient(90deg,rgba(2,8,14,.98),rgba(2,8,14,.86) 34%,rgba(2,8,14,.38) 68%,rgba(2,8,14,.76)),var(--hero-image)}';
-  document.head.appendChild(styleTag);
-
-  function restart() {
+  function startAuto() {
     clearInterval(timer);
-    timer = setInterval(() => setSlide(current + 1), 6500);
+    timer = setInterval(function () {
+      showSlide(current + 1, false);
+    }, interval);
   }
 
-  items.forEach((item, i) => {
-    item.querySelector('button').addEventListener('click', () => setSlide(i, true));
+  items.forEach(function(item, i) {
+    const button = item.querySelector('button');
+    if (button) {
+      button.addEventListener('click', function () {
+        showSlide(i, true);
+      });
+    }
   });
 
-  root.addEventListener('mouseenter', () => clearInterval(timer));
-  root.addEventListener('mouseleave', restart);
-  root.addEventListener('focusin', () => clearInterval(timer));
-  root.addEventListener('focusout', (e) => {
-    if (!root.contains(e.relatedTarget)) restart();
-  });
-
-  applyBackground();
-  setSlide(0);
-  restart();
-})();
+  // Automatic rotation stays active continuously.
+  // Manual clicks still select a slide and restart the 5-second cycle.
+  showSlide(0, false);
+  startAuto();
+});
 </script>
 
 </body>
