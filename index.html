@@ -23,7 +23,7 @@ header{
 }
 .nav{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:25px}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:190px;height:auto;display:block}
+.brand img{width:175px;height:auto;display:block}
 nav{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:900}
 nav a:hover{color:var(--blue2)}
 .cta{padding:12px 17px;background:var(--navy);color:#fff;border-radius:7px}
@@ -56,7 +56,7 @@ section{padding:88px 0}
 .head p{color:var(--muted);font-size:16px;margin:15px 0 0;line-height:1.65}
 
 .services{background:var(--bg)}
-.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.grid6{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
 .card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:25px;min-height:205px}
 .card .n{color:var(--blue2);font-size:11px;font-weight:900}
 .card h3{font-size:19px;margin:15px 0 8px}
@@ -134,18 +134,37 @@ section{padding:88px 0}
 @media(max-width:900px){
   nav{display:none}
   .position-grid,.solution-grid,.builder-grid,.contact-grid{grid-template-columns:1fr}
-  .grid6,.demos{grid-template-columns:1fr 1fr}
+  .grid6{grid-template-columns:repeat(2,1fr)}.demos{grid-template-columns:1fr 1fr}
   .kronix-principles{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .wrap{width:calc(100% - 28px)}
   section{padding:65px 0}
-  .grid6,.demos,.pillars,.contact-box,.modules,.solution-list{grid-template-columns:1fr}
+  .grid6,.demos,.pillars,.contact-box,.modules,.solution-list,.critical-grid{grid-template-columns:1fr}
   .hero{padding:75px 0 65px}
   .hero h1{letter-spacing:-1.5px}
-  .brand img{width:160px}
+  .brand img{width:145px}
   .foot{flex-direction:column}
 }
+
+.service-card{position:relative;overflow:hidden;background:#07192b;color:#fff;border:1px solid #183852;border-radius:13px;padding:25px;min-height:225px;isolation:isolate}
+.service-card:before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--service-bg);background-size:cover;background-position:center;opacity:.20;filter:saturate(.75)}
+.service-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(6,21,38,.97),rgba(6,21,38,.76))}
+.service-card .n{color:#71d8ff;font-size:11px;font-weight:900}
+.service-card h3{font-size:19px;margin:15px 0 8px;color:#fff}
+.service-card p{font-size:13px;color:#c2d2df;margin:0;line-height:1.55}
+.service-card ul{list-style:none;padding:0;margin:15px 0 0;font-size:12px;color:#e1ebf2}
+.service-card li{margin:6px 0}
+.service-card li:before{content:"✓";color:#71d8ff;font-weight:900;margin-right:7px}
+.critical{background:#f4f7fa;border-top:1px solid #dfe6ed}
+.critical-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.critical-card{position:relative;overflow:hidden;border-radius:15px;min-height:255px;padding:30px;background:#07192b;color:#fff;isolation:isolate}
+.critical-card:before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--critical-bg);background-size:cover;background-position:center;opacity:.23}
+.critical-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(125deg,rgba(6,21,38,.98),rgba(7,65,103,.72))}
+.critical-card .kicker{color:#80dcff}
+.critical-card h3{font-size:28px;margin:10px 0}
+.critical-card p{max-width:530px;color:#c5d5e4;line-height:1.65;font-size:14px}
+
 </style>
 </head>
 
@@ -158,7 +177,7 @@ section{padding:88px 0}
     <nav>
       <a href="#servicos">SERVIÇOS</a>
       <a href="#solucao">SOLUÇÃO</a>
-      <a href="#personalizacao">PROJETOS</a>
+      <a href="#missao-critica">MISSÃO CRÍTICA</a><a href="#personalizacao">PROJETOS</a>
       <a href="#kronix">KRONIX</a>
       <a class="cta" href="#contato">FALE CONOSCO</a>
     </nav>
@@ -185,10 +204,10 @@ section{padding:88px 0}
   <div class="ticker-track">
     <span>CABEAMENTO ESTRUTURADO</span><span>FIBRA ÓPTICA</span><span>ELÉTRICA</span>
     <span>AUTOMAÇÃO</span><span>CFTV</span><span>SEGURANÇA</span><span>CLIMATIZAÇÃO</span>
-    <span>REDES</span><span>INTEGRAÇÃO</span><span>INSTALAÇÃO E MANUTENÇÃO</span>
+    <span>REDES</span><span>INTEGRAÇÃO</span><span>INSTALAÇÃO E MANUTENÇÃO</span><span>UPS / NOBREAKS</span><span>AR-CONDICIONADO DE PRECISÃO</span>
     <span>CABEAMENTO ESTRUTURADO</span><span>FIBRA ÓPTICA</span><span>ELÉTRICA</span>
     <span>AUTOMAÇÃO</span><span>CFTV</span><span>SEGURANÇA</span><span>CLIMATIZAÇÃO</span>
-    <span>REDES</span><span>INTEGRAÇÃO</span><span>INSTALAÇÃO E MANUTENÇÃO</span>
+    <span>REDES</span><span>INTEGRAÇÃO</span><span>INSTALAÇÃO E MANUTENÇÃO</span><span>UPS / NOBREAKS</span><span>AR-CONDICIONADO DE PRECISÃO</span>
   </div>
 </div>
 
@@ -199,16 +218,31 @@ section{padding:88px 0}
       <h2>Infraestrutura, instalação e tecnologia em uma mesma solução.</h2>
       <p>Atuação técnica do projeto à execução, com possibilidade de integração e expansão conforme a necessidade.</p>
     </div>
-    <div class="grid6">
-      <article class="card"><div class="n">01</div><h3>Cabeamento Estruturado</h3><p>Infraestrutura organizada para dados, comunicação e expansão.</p><ul><li>Dados e voz</li><li>Racks e organização</li><li>Identificação e manutenção</li></ul></article>
-      <article class="card"><div class="n">02</div><h3>Fibra Óptica</h3><p>Implantação, adequação e manutenção de enlaces ópticos.</p><ul><li>Fusão</li><li>DIOs e distribuição</li><li>Expansão</li></ul></article>
-      <article class="card"><div class="n">03</div><h3>Elétrica</h3><p>Infraestrutura elétrica aplicada aos projetos tecnológicos.</p><ul><li>Instalação</li><li>Adequações</li><li>Distribuição</li></ul></article>
-      <article class="card"><div class="n">04</div><h3>Automação</h3><p>Controle e integração de equipamentos e processos.</p><ul><li>Residencial</li><li>Comercial</li><li>Industrial</li></ul></article>
-      <article class="card"><div class="n">05</div><h3>Segurança Eletrônica</h3><p>Infraestrutura para proteção e controle eletrônico.</p><ul><li>CFTV</li><li>Controle de acesso</li><li>Sensores e alarmes</li></ul></article>
-      <article class="card"><div class="n">06</div><h3>Climatização</h3><p>Instalação, manutenção e controle inteligente de climatização.</p><ul><li>Instalação e manutenção</li><li>Controle de temperatura</li><li>Revezamento inteligente</li></ul></article>
+    <div class="grid6"><article class="service-card" style="--service-bg:url('assets/network.jpg')"><div class="n">01</div><h3>Cabeamento Estruturado</h3><p>Infraestrutura organizada para dados, comunicação e expansão.</p><ul><li>Dados e voz</li><li>Racks e organização</li><li>Identificação e manutenção</li></ul></article><article class="service-card" style="--service-bg:url('assets/network.jpg')"><div class="n">02</div><h3>Fibra Óptica</h3><p>Implantação, adequação e manutenção de enlaces ópticos.</p><ul><li>Fusão</li><li>DIOs e distribuição</li><li>Expansão</li></ul></article><article class="service-card" style="--service-bg:url('assets/electric.jpg')"><div class="n">03</div><h3>Elétrica</h3><p>Infraestrutura elétrica aplicada aos projetos tecnológicos.</p><ul><li>Instalação</li><li>Adequações</li><li>Distribuição</li></ul></article><article class="service-card" style="--service-bg:url('assets/industrial.jpg')"><div class="n">04</div><h3>Automação</h3><p>Controle e integração de equipamentos e processos.</p><ul><li>Residencial</li><li>Comercial</li><li>Industrial</li></ul></article><article class="service-card" style="--service-bg:url('assets/cctv.jpg')"><div class="n">05</div><h3>Segurança Eletrônica</h3><p>Infraestrutura para proteção e controle eletrônico.</p><ul><li>CFTV</li><li>Controle de acesso</li><li>Sensores e alarmes</li></ul></article><article class="service-card" style="--service-bg:url('assets/hvac.jpg')"><div class="n">06</div><h3>Climatização</h3><p>Instalação, manutenção e controle inteligente de climatização.</p><ul><li>Instalação e manutenção</li><li>Controle de temperatura</li><li>Revezamento inteligente</li></ul></article><article class="service-card" style="--service-bg:url('assets/industrial.jpg')"><div class="n">07</div><h3>UPS / Nobreaks</h3><p>Infraestrutura para alimentação ininterrupta e continuidade de operações críticas.</p><ul><li>UPS e nobreaks</li><li>Infraestrutura elétrica</li><li>Distribuição e bypass</li></ul></article><article class="service-card" style="--service-bg:url('assets/hvac.jpg')"><div class="n">08</div><h3>Ar-condicionado de precisão</h3><p>Soluções de climatização para ambientes que exigem controle rigoroso.</p><ul><li>Controle de temperatura</li><li>Instalação e manutenção</li><li>Ambientes de missão crítica</li></ul></article></div>
+  </div>
+</section>
+<section class="critical" id="missao-critica">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">INFRAESTRUTURA DE MISSÃO CRÍTICA</div>
+      <h2>Quando a continuidade da operação exige mais.</h2>
+      <p>Infraestrutura, climatização e suporte técnico pensados para ambientes que não podem depender de soluções improvisadas.</p>
+    </div>
+    <div class="critical-grid">
+      <article class="critical-card" style="--critical-bg:url('assets/industrial.jpg')">
+        <div class="kicker">UPS / NOBREAKS</div>
+        <h3>Energia ininterrupta.</h3>
+        <p>Infraestrutura para sistemas de alimentação ininterrupta, distribuição e continuidade de equipamentos e operações críticas.</p>
+      </article>
+      <article class="critical-card" style="--critical-bg:url('assets/hvac.jpg')">
+        <div class="kicker">AR-CONDICIONADO DE PRECISÃO</div>
+        <h3>Climatização de precisão.</h3>
+        <p>Instalação, manutenção e soluções para ambientes que exigem controle rigoroso de temperatura e condições operacionais.</p>
+      </article>
     </div>
   </div>
 </section>
+
 
 <section class="position" id="solucao">
   <div class="wrap position-grid">
