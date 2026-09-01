@@ -1,401 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="INSEGCOM — Tecnologia, Infraestrutura e Segurança. Projetos, instalação, integração e manutenção de soluções tecnológicas.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="INSEGCOM — Tecnologia, Infraestrutura e Segurança. Soluções projetadas de acordo com a necessidade de cada cliente, com destaque para a plataforma KRONIX.">
 <title>INSEGCOM | Tecnologia • Infraestrutura • Segurança</title>
 <style>
-:root{
-  --blue:#1268b3;
-  --blue2:#0b4f91;
-  --navy:#07172d;
-  --ink:#0b1627;
-  --muted:#6d7888;
-  --line:#dce3eb;
-  --soft:#f4f7fa;
-  --white:#fff;
-  --max:1180px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--ink);
-  background:#fff;
-  line-height:1.55;
-}
-a{text-decoration:none;color:inherit}
-.container{width:min(var(--max),calc(100% - 40px));margin:auto}
-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(220,227,235,.9);
-}
-.nav{
-  min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px;
-}
-.brand{display:flex;align-items:center;gap:13px;min-width:230px}
-.brand svg{width:57px;height:57px;flex:none}
-.brand-text strong{
-  display:block;font-size:24px;letter-spacing:2px;line-height:1;
-  font-weight:800;
-}
-.brand-text span{
-  display:block;margin-top:5px;font-size:9px;letter-spacing:1.4px;
-  color:#667383;font-weight:700;white-space:nowrap;
-}
-nav{display:flex;gap:27px;align-items:center}
-nav a{font-size:13px;font-weight:700;color:#253246}
-nav a:hover{color:var(--blue)}
-.nav-cta{
-  padding:11px 17px;border-radius:8px;background:var(--navy);color:#fff!important;
-}
-.hero{
-  position:relative;overflow:hidden;
-  min-height:650px;display:flex;align-items:center;
-  background:
-    radial-gradient(circle at 80% 30%,rgba(18,104,179,.15),transparent 30%),
-    linear-gradient(135deg,#07172d 0%,#0b223f 58%,#0b4f91 130%);
-  color:#fff;
-}
-.hero:after{
-  content:"";position:absolute;right:-180px;bottom:-300px;width:650px;height:650px;
-  border:1px solid rgba(255,255,255,.12);border-radius:50%;
-}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;position:relative;z-index:2}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  font-size:11px;letter-spacing:2px;font-weight:800;text-transform:uppercase;
-  color:#8fc9ff;margin-bottom:18px;
-}
-.eyebrow:before{content:"";width:27px;height:2px;background:#2d8ee8}
-h1{font-size:clamp(42px,5vw,70px);line-height:1.03;letter-spacing:-2.5px;max-width:720px}
-.hero p{font-size:18px;color:#c7d5e6;max-width:650px;margin:25px 0 32px}
-.actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:14px 20px;border-radius:8px;font-size:13px;font-weight:800;
-  border:1px solid rgba(255,255,255,.2);
-}
-.btn-primary{background:#fff;color:var(--navy)}
-.btn-ghost{color:#fff}
-.kronix-preview{
-  min-height:390px;border:1px solid rgba(255,255,255,.16);border-radius:18px;
-  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.025));
-  box-shadow:0 25px 80px rgba(0,0,0,.25);padding:18px;
-}
-.preview-top{display:flex;justify-content:space-between;align-items:center;color:#c9d8e9;font-size:11px}
-.preview-dot{width:8px;height:8px;border-radius:50%;background:#47a8ff;box-shadow:0 0 16px #47a8ff}
-.preview-screen{
-  margin-top:18px;border-radius:12px;background:#061120;min-height:315px;
-  border:1px solid rgba(255,255,255,.08);padding:18px;
-}
-.dashboard-title{font-size:14px;font-weight:800}
-.dashboard-sub{font-size:10px;color:#8090a4;margin-top:3px}
-.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
-.tile{
-  padding:16px;border-radius:10px;background:#0c1d33;border:1px solid #17314f;
-}
-.tile small{color:#7890a9;font-size:9px;text-transform:uppercase;letter-spacing:1px}
-.tile b{display:block;font-size:23px;margin-top:4px}
-.bar{height:5px;background:#18334f;border-radius:5px;margin-top:12px;overflow:hidden}
-.bar i{display:block;width:72%;height:100%;background:#1684df;border-radius:5px}
-.ticker{
-  background:#fff;border-bottom:1px solid var(--line);overflow:hidden;
-  white-space:nowrap;
-}
-.ticker-track{
-  display:inline-flex;min-width:max-content;animation:scroll 32s linear infinite;
-}
-.ticker span{
-  display:inline-flex;align-items:center;gap:22px;padding:19px 24px;
-  font-size:11px;font-weight:900;letter-spacing:1.5px;color:#26374d;
-}
-.ticker span:after{content:"•";color:var(--blue);font-size:18px}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-section{padding:92px 0}
-.section-head{max-width:720px;margin-bottom:42px}
-.kicker{font-size:11px;letter-spacing:2px;color:var(--blue);font-weight:900}
-h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-1.5px;margin-top:9px}
-.section-head p{color:var(--muted);margin-top:15px;font-size:16px}
-.services{background:var(--soft)}
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{
-  background:#fff;border:1px solid var(--line);border-radius:14px;padding:27px;
-  transition:.2s ease;min-height:210px;
-}
-.card:hover{transform:translateY(-4px);box-shadow:0 16px 35px rgba(10,31,55,.08);border-color:#b9d1e7}
-.num{font-size:11px;color:var(--blue);font-weight:900;letter-spacing:1px}
-.card h3{font-size:20px;margin:18px 0 8px}
-.card p{font-size:14px;color:var(--muted)}
-.card ul{list-style:none;margin-top:16px;color:#344357;font-size:12px}
-.card li{margin-top:6px}
-.card li:before{content:"✓";color:var(--blue);font-weight:900;margin-right:8px}
-.solutions-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
-.steps{display:grid;gap:12px}
-.step{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
-.step b{font-size:12px;color:var(--blue);min-width:30px}
-.step h3{font-size:16px}
-.step p{font-size:13px;color:var(--muted);margin-top:3px}
-.kronix{
-  background:#061323;color:#fff;overflow:hidden;position:relative;
-}
-.kronix .section-head p{color:#9fb1c7}
-.kronix-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.kronix-box{
-  border:1px solid #1a3554;border-radius:18px;padding:26px;
-  background:linear-gradient(145deg,#0b1d33,#071120);
-}
-.kronix-word{font-size:44px;font-weight:900;letter-spacing:4px}
-.kronix-word span{color:#258ce0}
-.kronix-box p{color:#9fb1c7;margin-top:10px;font-size:14px}
-.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:25px}
-.module{padding:13px 11px;border:1px solid #1a3554;border-radius:9px;font-size:10px;color:#b8c8d9;font-weight:800}
-.demos{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.demo{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.demo-top{height:130px;background:linear-gradient(145deg,#0b1b30,#155f9e);display:flex;align-items:end;padding:14px;color:#fff}
-.demo h3{font-size:14px}
-.demo p{font-size:11px;color:#748196;padding:12px 14px 16px}
-.about{background:var(--soft)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
-.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.check{background:#fff;border:1px solid var(--line);padding:18px;border-radius:10px}
-.check b{display:block;font-size:13px}
-.check span{display:block;font-size:11px;color:var(--muted);margin-top:4px}
-.contact{
-  background:linear-gradient(135deg,#0b1b30,#0b4f91);color:#fff;
-}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-.contact p{color:#c4d3e5;margin-top:14px}
-.contact-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.contact-card{border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px;background:rgba(255,255,255,.05)}
-.contact-card small{font-size:10px;color:#9db4cc;text-transform:uppercase;letter-spacing:1px}
-.contact-card b{display:block;margin-top:7px;font-size:13px}
-footer{background:#050d18;color:#8fa0b4;padding:30px 0}
-.footer{display:flex;justify-content:space-between;gap:30px;align-items:center}
-.footer-brand{color:#fff;font-weight:900;letter-spacing:1px}
-.footer small{font-size:11px}
-@media(max-width:950px){
-  nav{display:none}
-  .hero-grid,.solutions-grid,.kronix-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .hero{padding:75px 0}
-  .service-grid{grid-template-columns:repeat(2,1fr)}
-  .demos{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:620px){
-  .container{width:min(var(--max),calc(100% - 28px))}
-  section{padding:65px 0}
-  .brand-text span{display:none}
-  .hero-grid{gap:40px}
-  .service-grid,.modules,.checks,.contact-cards{grid-template-columns:1fr}
-  .demos{grid-template-columns:1fr}
-  h1{letter-spacing:-1.5px}
-  .footer{flex-direction:column;align-items:flex-start}
-}
+:root{--navy:#061526;--navy2:#0a2038;--blue:#08b9ee;--blue2:#0a6fc0;--text:#eaf5ff;--muted:#9db0c2;--line:#183852;--bg:#f4f7fa;--white:#fff;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:#122033;background:#fff}a{text-decoration:none;color:inherit}.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid #dfe6ed}.nav{height:84px;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand{display:flex;align-items:center;gap:12px}.mark{width:48px;height:48px;position:relative}.mark i{position:absolute;bottom:8px;width:10px;background:#0b6db7;transform:skewY(-30deg)}.mark i:nth-child(1){height:28px;left:5px}.mark i:nth-child(2){height:40px;left:19px;background:#081d37}.mark i:nth-child(3){height:30px;left:33px}.mark:after{content:"";position:absolute;width:43px;height:17px;border-bottom:5px solid #081d37;border-radius:50%;left:0;bottom:2px}.brand strong{font-size:25px;letter-spacing:2px;color:#09182b}.brand span{display:block;font-size:9px;letter-spacing:1.4px;color:#6d7b8a;font-weight:800;margin-top:3px}nav{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:800}nav a:hover{color:var(--blue2)}.cta{padding:12px 17px;background:var(--navy);color:#fff;border-radius:7px}
+.hero{background:linear-gradient(125deg,#061526,#0b2c4b 60%,#075f99);color:#fff;padding:92px 0 72px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.eyebrow{font-size:11px;letter-spacing:2px;color:#83dfff;font-weight:900;margin-bottom:17px}.hero h1{font-size:clamp(40px,5.2vw,66px);line-height:1.02;letter-spacing:-2px;margin:0}.hero p{font-size:18px;line-height:1.6;color:#c8d8e7;max-width:620px;margin:24px 0 30px}.buttons{display:flex;gap:12px;flex-wrap:wrap}.btn{padding:14px 19px;border-radius:7px;font-size:12px;font-weight:900}.btn.light{background:#fff;color:#07182a}.btn.out{border:1px solid rgba(255,255,255,.3)}
+.hero-copy .signature{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);font-size:12px;color:#b6c9da}.signature b{color:#fff}.hero-art{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:16px;background:rgba(255,255,255,.045);box-shadow:0 25px 70px rgba(0,0,0,.25)}.hero-art img{display:block;width:100%;border-radius:11px}.hero-art small{display:block;margin:12px 3px 0;color:#9db1c5;font-size:10px;letter-spacing:1px}
+.ticker{overflow:hidden;border-bottom:1px solid #dfe6ed;background:#fff;white-space:nowrap}.ticker-track{display:inline-flex;min-width:max-content;animation:move 34s linear infinite}.ticker span{padding:18px 22px;font-size:11px;font-weight:900;letter-spacing:1.5px;color:#24364a}.ticker span:after{content:"•";color:var(--blue2);margin-left:22px;font-size:16px}@keyframes move{to{transform:translateX(-50%)}}
+section{padding:88px 0}.head{max-width:720px;margin-bottom:40px}.kicker{font-size:11px;letter-spacing:2px;font-weight:900;color:#0877c6}.head h2{font-size:clamp(31px,4vw,47px);line-height:1.08;letter-spacing:-1.4px;margin:9px 0 0}.head p{color:#68778a;font-size:16px;margin:15px 0 0;line-height:1.65}
+.services{background:var(--bg)}.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:#fff;border:1px solid #dfe6ed;border-radius:13px;padding:25px;min-height:200px}.card .n{color:#0877c6;font-size:11px;font-weight:900}.card h3{font-size:19px;margin:15px 0 8px}.card p{font-size:13px;color:#718094;margin:0}.card ul{list-style:none;padding:0;margin:15px 0 0;font-size:12px;color:#39495d}.card li{margin:6px 0}.card li:before{content:"✓";color:#0877c6;font-weight:900;margin-right:7px}
+.position{background:#fff}.position-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}.statement{font-size:25px;line-height:1.35;color:#12243a;font-weight:800}.statement b{color:#0877c6}.pillars{display:grid;grid-template-columns:1fr 1fr;gap:11px}.pillar{border-left:3px solid #0877c6;padding:14px 16px;background:#f5f8fb}.pillar b{font-size:13px}.pillar p{font-size:11px;color:#718094;margin:5px 0 0}
+.kronix{background:#061526;color:#fff;padding-bottom:96px}.kronix .head p{color:#9fb2c5}.kronix-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.show{border:1px solid var(--line);border-radius:16px;padding:10px;background:#091c30}.show img{width:100%;display:block;border-radius:10px}.show .caption{padding:15px 7px 7px}.caption b{font-size:14px}.caption p{font-size:11px;color:#8ea3b8;margin:5px 0 0}.identity{margin-top:16px;padding:20px;border:1px dashed #2b506d;border-radius:12px;text-align:center;color:#a9bfd2;font-size:13px}.identity strong{display:block;color:#fff;font-size:15px;margin-bottom:5px}
+.application{background:#fff}.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.app{border:1px solid #dfe6ed;border-radius:13px;overflow:hidden}.app img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.app div{padding:16px}.app b{font-size:14px}.app p{font-size:12px;color:#718094;margin:5px 0 0}.tag{display:inline-block;margin-top:10px;font-size:9px;letter-spacing:1px;font-weight:900;color:#0877c6}
+.builder{background:var(--bg)}.builder-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px}.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.module{background:#fff;border:1px solid #dfe6ed;border-radius:9px;padding:15px}.module b{font-size:13px}.module span{display:block;color:#758397;font-size:10px;margin-top:3px}.build-note{margin-top:18px;padding:18px;background:#07192b;color:#fff;border-radius:11px;font-size:13px;line-height:1.55}.build-note b{color:#71d8ff}
+.contact{background:linear-gradient(125deg,#08182b,#075f99);color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}.contact h2{font-size:46px;line-height:1.08;margin:9px 0}.contact p{color:#c5d5e4}.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:12px}.contact-card{padding:20px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:11px}.contact-card small{display:block;color:#9eb4c9;font-size:9px;letter-spacing:1.4px;text-transform:uppercase}.contact-card b{display:block;margin-top:7px;font-size:13px}.footer{background:#040c15;color:#8fa0b3;padding:28px 0}.foot{display:flex;justify-content:space-between;gap:20px}.foot strong{color:#fff;letter-spacing:1px}
+@media(max-width:900px){nav{display:none}.hero-grid,.position-grid,.kronix-grid,.builder-grid,.contact-grid{grid-template-columns:1fr}.grid6,.app-grid{grid-template-columns:1fr 1fr}.hero{padding-top:65px}.kronix-grid{gap:18px}}
+@media(max-width:600px){.wrap{width:calc(100% - 28px)}section{padding:65px 0}.grid6,.app-grid,.pillars,.contact-box,.modules{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}.brand span{display:none}.foot{flex-direction:column}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="container nav">
-    <a class="brand" href="#inicio" aria-label="INSEGCOM">
-      <!-- Marca INSEGCOM: símbolo geométrico + escritas. Sem moldura circular. -->
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0" stop-color="#1268b3"/>
-            <stop offset="1" stop-color="#0b4f91"/>
-          </linearGradient>
-        </defs>
-        <path d="M26 32 L39 24 L39 70 L26 63 Z" fill="url(#g)"/>
-        <path d="M44 20 L58 12 L58 66 L44 73 Z" fill="#07172d"/>
-        <path d="M63 31 L76 23 L76 68 L63 73 Z" fill="#1268b3"/>
-        <path d="M66 47 L79 35 L90 35" fill="none" stroke="#65788c" stroke-width="3"/>
-        <path d="M66 57 L79 45 L94 45" fill="none" stroke="#65788c" stroke-width="3"/>
-        <path d="M66 67 L79 55 L90 55" fill="none" stroke="#65788c" stroke-width="3"/>
-        <circle cx="91" cy="35" r="3" fill="#fff" stroke="#65788c" stroke-width="2"/>
-        <circle cx="95" cy="45" r="3" fill="#fff" stroke="#65788c" stroke-width="2"/>
-        <circle cx="91" cy="55" r="3" fill="#fff" stroke="#65788c" stroke-width="2"/>
-        <path d="M20 69 C34 86 73 88 82 70" fill="none" stroke="#07172d" stroke-width="5" stroke-linecap="round"/>
-        <path d="M20 69 C31 80 58 82 73 76" fill="none" stroke="#6d7b89" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <div class="brand-text">
-        <strong>INSEGCOM</strong>
-        <span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span>
-      </div>
-    </a>
-    <nav>
-      <a href="#servicos">SERVIÇOS</a>
-      <a href="#solucoes">SOLUÇÕES</a>
-      <a href="#kronix">KRONIX</a>
-      <a href="#empresa">EMPRESA</a>
-      <a class="nav-cta" href="#contato">FALE CONOSCO</a>
-    </nav>
-  </div>
-</header>
-
+<header><div class="wrap nav">
+<a class="brand" href="#inicio" aria-label="INSEGCOM"><div class="mark"><i></i><i></i><i></i></div><div><strong>INSEGCOM</strong><span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span></div></a>
+<nav><a href="#servicos">SERVIÇOS</a><a href="#solucao">SOLUÇÃO</a><a href="#kronix">KRONIX</a><a href="#aplicacoes">APLICAÇÕES</a><a class="cta" href="#contato">FALE CONOSCO</a></nav>
+</div></header>
 <main>
-<section class="hero" id="inicio">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">INSEGCOM • TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</div>
-      <h1>Infraestrutura, tecnologia e integração para soluções que funcionam.</h1>
-      <p>Projetamos, instalamos e integramos sistemas de infraestrutura, elétrica, automação, segurança e climatização para diferentes ambientes e necessidades.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#servicos">CONHEÇA NOSSOS SERVIÇOS</a>
-        <a class="btn btn-ghost" href="#contato">FALAR SOBRE MEU PROJETO</a>
-      </div>
-    </div>
-    <div class="kronix-preview" aria-label="Prévia conceitual do dashboard KRONIX">
-      <div class="preview-top"><span>KRONIX • INTEGRAÇÃO E SUPERVISÃO</span><i class="preview-dot"></i></div>
-      <div class="preview-screen">
-        <div class="dashboard-title">VISÃO GERAL</div>
-        <div class="dashboard-sub">Energia • Climatização • Segurança • Automação</div>
-        <div class="tiles">
-          <div class="tile"><small>Energia</small><b>OK</b><div class="bar"><i></i></div></div>
-          <div class="tile"><small>Climatização</small><b>02</b><div class="bar"><i style="width:58%"></i></div></div>
-          <div class="tile"><small>Segurança</small><b>ONLINE</b><div class="bar"><i style="width:88%"></i></div></div>
-          <div class="tile"><small>Automação</small><b>ATIVA</b><div class="bar"><i style="width:76%"></i></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="ticker" aria-label="Serviços INSEGCOM">
-  <div class="ticker-track">
-    <span>CABEAMENTO ESTRUTURADO</span><span>FIBRA ÓPTICA</span><span>ELÉTRICA</span>
-    <span>AUTOMAÇÃO</span><span>CFTV</span><span>SEGURANÇA</span><span>CLIMATIZAÇÃO</span>
-    <span>REDES</span><span>INTEGRAÇÃO</span><span>KRONIX</span>
-    <span>CABEAMENTO ESTRUTURADO</span><span>FIBRA ÓPTICA</span><span>ELÉTRICA</span>
-    <span>AUTOMAÇÃO</span><span>CFTV</span><span>SEGURANÇA</span><span>CLIMATIZAÇÃO</span>
-    <span>REDES</span><span>INTEGRAÇÃO</span><span>KRONIX</span>
-  </div>
-</div>
-
-<section class="services" id="servicos">
-  <div class="container">
-    <div class="section-head">
-      <div class="kicker">SERVIÇOS</div>
-      <h2>Uma atuação ampla, do projeto à integração.</h2>
-      <p>A INSEGCOM atende a infraestrutura e os sistemas que fazem parte dela, com instalação, integração, manutenção e possibilidade de expansão.</p>
-    </div>
-    <div class="service-grid">
-      <article class="card"><div class="num">01</div><h3>Cabeamento Estruturado</h3><p>Redes organizadas e preparadas para comunicação e expansão.</p><ul><li>Dados e voz</li><li>Racks e patch panels</li><li>Identificação e organização</li></ul></article>
-      <article class="card"><div class="num">02</div><h3>Fibra Óptica</h3><p>Implantação e manutenção de infraestrutura óptica.</p><ul><li>Fusão</li><li>DIOs e caixas ópticas</li><li>Enlaces e expansão</li></ul></article>
-      <article class="card"><div class="num">03</div><h3>Elétrica</h3><p>Infraestrutura elétrica aplicada às soluções tecnológicas.</p><ul><li>Alimentação</li><li>Adequações</li><li>Distribuição e integração</li></ul></article>
-      <article class="card"><div class="num">04</div><h3>Automação</h3><p>Controle e integração de equipamentos e processos.</p><ul><li>Residencial</li><li>Comercial</li><li>Industrial</li></ul></article>
-      <article class="card"><div class="num">05</div><h3>Segurança Eletrônica</h3><p>Sistemas eletrônicos para proteção e controle de ambientes.</p><ul><li>CFTV</li><li>Controle de acesso</li><li>Alarmes e sensores</li></ul></article>
-      <article class="card"><div class="num">06</div><h3>Climatização</h3><p>Infraestrutura e automação para controle e gestão de climatização.</p><ul><li>Controle</li><li>Revezamento</li><li>Integração</li></ul></article>
-    </div>
-  </div>
-</section>
-
-<section id="solucoes">
-  <div class="container solutions-grid">
-    <div class="section-head">
-      <div class="kicker">SOLUÇÕES</div>
-      <h2>Um projeto pode reunir diferentes tecnologias.</h2>
-      <p>A INSEGCOM trabalha com diferentes disciplinas sem transformar cada uma delas em um produto isolado. A infraestrutura pode evoluir para automação, segurança e controle conforme a necessidade.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><b>01</b><div><h3>Infraestrutura preparada</h3><p>Base organizada para instalação, manutenção e futuras expansões.</p></div></div>
-      <div class="step"><b>02</b><div><h3>Sistemas integrados</h3><p>Equipamentos e tecnologias trabalhando dentro de uma solução coerente.</p></div></div>
-      <div class="step"><b>03</b><div><h3>Instalação e manutenção</h3><p>Execução técnica e suporte para manter a solução funcionando.</p></div></div>
-      <div class="step"><b>04</b><div><h3>Possibilidade de expansão</h3><p>Projetos preparados para receber novos recursos quando fizer sentido.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="kronix" id="kronix">
-  <div class="container">
-    <div class="section-head">
-      <div class="kicker">PRODUTO INSEGCOM</div>
-      <h2>KRONIX</h2>
-      <p>Uma plataforma modular desenvolvida pela INSEGCOM para integrar automação, controle, monitoramento e visualização.</p>
-    </div>
-    <div class="kronix-grid">
-      <div class="kronix-box">
-        <div class="kronix-word">KRON<span>IX</span></div>
-        <p><strong>KRONIX é um produto da INSEGCOM.</strong> Ele amplia as possibilidades de integração dos projetos, conectando recursos de diferentes áreas em uma mesma plataforma.</p>
-        <div class="modules">
-          <div class="module">ENERGIA</div><div class="module">CLIMATIZAÇÃO</div><div class="module">CFTV</div>
-          <div class="module">ACESSO</div><div class="module">AUTOMAÇÃO</div><div class="module">SENSORES</div>
-          <div class="module">ELÉTRICA</div><div class="module">ALARME</div><div class="module">VEICULAR</div>
-        </div>
-      </div>
-      <div>
-        <div class="section-head" style="margin-bottom:18px">
-          <div class="kicker">EXPERIÊNCIA KRONIX</div>
-          <h2 style="color:#fff">Monte sua solução.</h2>
-          <p>Escolha os recursos que deseja conhecer e veja como diferentes módulos podem trabalhar juntos.</p>
-        </div>
-        <div class="actions">
-          <a class="btn btn-primary" href="#contato">VER POSSIBILIDADES</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="section-head">
-      <div class="kicker">APLICAÇÕES</div>
-      <h2>Algumas possibilidades do KRONIX.</h2>
-      <p>Exemplos para dar um norte ao visitante. A solução final é definida conforme o projeto.</p>
-    </div>
-    <div class="demos">
-      <article class="demo"><div class="demo-top"><h3>KRONIX 01<br>PREDIAL</h3></div><p>Energia • iluminação • sensores • automação</p></article>
-      <article class="demo"><div class="demo-top"><h3>KRONIX 02<br>CLIMATIZAÇÃO</h3></div><p>Temperatura • revezamento • controle</p></article>
-      <article class="demo"><div class="demo-top"><h3>KRONIX 03<br>SEGURANÇA</h3></div><p>CFTV • acesso • intrusão • incêndio</p></article>
-      <article class="demo"><div class="demo-top"><h3>KRONIX 04<br>INDUSTRIAL</h3></div><p>Máquinas • sensores • automação</p></article>
-      <article class="demo"><div class="demo-top"><h3>KRONIX 05<br>VEICULAR</h3></div><p>Telemetria • sensores • integração</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="about" id="empresa">
-  <div class="container about-grid">
-    <div class="section-head">
-      <div class="kicker">INSEGCOM</div>
-      <h2>Tecnologia aplicada à realidade.</h2>
-      <p>A empresa reúne experiência técnica, infraestrutura e tecnologia para desenvolver soluções adequadas a cada projeto — da implantação da infraestrutura à integração dos sistemas.</p>
-      <p>O trabalho pode envolver instalação, adequação, automação, integração e manutenção.</p>
-    </div>
-    <div class="checks">
-      <div class="check"><b>Infraestrutura</b><span>Redes e instalações</span></div>
-      <div class="check"><b>Automação</b><span>Controle e integração</span></div>
-      <div class="check"><b>Segurança</b><span>Proteção e controle eletrônico</span></div>
-      <div class="check"><b>Integração</b><span>Tecnologias trabalhando juntas</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contato">
-  <div class="container contact-grid">
-    <div>
-      <div class="kicker" style="color:#8fc9ff">CONTATO</div>
-      <h2>Vamos conversar sobre seu projeto.</h2>
-      <p>Escolha o canal adequado para falar com a INSEGCOM.</p>
-    </div>
-    <div class="contact-cards">
-      <a class="contact-card" href="mailto:comercial@insegcom.com.br"><small>Comercial</small><b>comercial@insegcom.com.br</b></a>
-      <a class="contact-card" href="mailto:financeiro@insegcom.com.br"><small>Financeiro</small><b>financeiro@insegcom.com.br</b></a>
-      <a class="contact-card" href="mailto:contato@insegcom.com.br"><small>Contato</small><b>contato@insegcom.com.br</b></a>
-      <a class="contact-card" href="https://wa.me/" target="_blank" rel="noopener"><small>Suporte</small><b>WhatsApp</b></a>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer">
-    <div><div class="footer-brand">INSEGCOM</div><small>Tecnologia • Infraestrutura • Segurança</small></div>
-    <small>© 2026 INSEGCOM. Todos os direitos reservados.</small>
-  </div>
-</footer>
-</body>
-</html>
+<section class="hero" id="inicio"><div class="wrap hero-grid"><div class="hero-copy">
+<div class="eyebrow">TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</div>
+<h1>Seu projeto pode fazer muito mais.</h1>
+<p>A INSEGCOM projeta e integra soluções de infraestrutura e tecnologia com alto impacto visual, controle real dos processos e investimento inteligente.</p>
+<div class="buttons"><a class="btn light" href="#kronix">CONHEÇA O KRONIX</a><a class="btn out" href="#contato">FALE SOBRE SEU PROJETO</a></div>
+<div class="signature"><b>INSEGCOM</b> — tecnologia aplicada à realidade de cada cliente.</div>
+</div><div class="hero-art"><img src="assets/kronix-climatizacao.png" alt="Dashboard KRONIX para controle e revezamento inteligente de climatização"><small>DEMONSTRAÇÃO REAL DA PROPOSTA DE CONTROLE E SUPERVISÃO</small></div></div></section>
+<div class="ticker"><div class="ticker-track"><span>CABEAMENTO ESTRUTURADO</span><span>FIBRA ÓPTICA</span><span>ELÉTRICA</span><span>AUTOMAÇÃO</span><span>CFTV</span><span>SEGURANÇA</span><span>CLIMATIZAÇÃO</span><span>REDES</span><span>INTEGRAÇÃO</span><span>KRONIX</span><span>CABEAMENTO ESTRUTURADO</span><span>FIBRA ÓPTICA</span><span>ELÉTRICA</span><span>AUTOMAÇÃO</span><span>CFTV</span><span>SEGURANÇA</span><span>CLIMATIZAÇÃO</span><span>REDES</span><span>INTEGRAÇÃO</span><span>KRONIX</span></div></div>
+<section class="services" id="servicos"><div class="wrap"><div class="head"><div class="kicker">SERVIÇOS</div><h2>Infraestrutura, instalação e tecnologia em uma mesma solução.</h2><p>Atuação técnica do projeto à execução, com possibilidade de integração e expansão conforme a necessidade.</p></div><div class="grid6">
+<article class="card"><div class="n">01</div><h3>Cabeamento Estruturado</h3><p>Infraestrutura organizada para dados, comunicação e expansão.</p><ul><li>Dados e voz</li><li>Racks e organização</li><li>Identificação e manutenção</li></ul></article>
+<article class="card"><div class="n">02</div><h3>Fibra Óptica</h3><p>Implantação, adequação e manutenção de enlaces ópticos.</p><ul><li>Fusão</li><li>DIOs e distribuição</li><li>Expansão</li></ul></article>
+<article class="card"><div class="n">03</div><h3>Elétrica</h3><p>Infraestrutura elétrica aplicada aos projetos tecnológicos.</p><ul><li>Instalação</li><li>Adequações</li><li>Distribuição</li></ul></article>
+<article class="card"><div class="n">04</div><h3>Automação</h3><p>Controle e integração de equipamentos e processos.</p><ul><li>Residencial</li><li>Comercial</li><li>Industrial</li></ul></article>
+<article class="card"><div class="n">05</div><h3>Segurança Eletrônica</h3><p>Infraestrutura para proteção e controle eletrônico.</p><ul><li>CFTV</li><li>Acesso</li><li>Sensores e alarmes</li></ul></article>
+<article class="card"><div class="n">06</div><h3>Climatização</h3><p>Instalação, manutenção e controle inteligente de climatização.</p><ul><li>Instalação e manutenção</li><li>Controle de temperatura</li><li>Revezamento inteligente</li></ul></article>
+</div></div></section>
+<section class="position" id="solucao"><div class="wrap position-grid"><div><div class="kicker">A PROPOSTA</div><div class="statement">Tecnologia de alto impacto. <b>Investimento inteligente.</b></div><p style="color:#718094;line-height:1.7">A INSEGCOM busca entregar soluções que sejam visualmente sofisticadas, tecnicamente consistentes e dimensionadas para a realidade de cada cliente — sem obrigar o projeto a receber recursos que não fazem sentido para sua operação.</p></div><div class="pillars"><div class="pillar"><b>Controle real</b><p>O sistema atua sobre o processo, não apenas exibe informações.</p></div><div class="pillar"><b>Projeto sob medida</b><p>A aplicação é definida conforme a necessidade do cliente.</p></div><div class="pillar"><b>Expansão</b><p>Novos recursos podem ser incorporados conforme o projeto evolui.</p></div><div class="pillar"><b>Alto impacto visual</b><p>Interfaces que tornam o controle claro, profissional e fácil de entender.</p></div></div></div></section>
+<section class="kronix" id="kronix"><div class="wrap"><div class="head"><div class="kicker">PLATAFORMA INSEGCOM</div><h2>KRONIX — uma plataforma. Muitas possibilidades.</h2><p>O KRONIX é modular e pode ser configurado para diferentes aplicações. O cliente define a necessidade e a INSEGCOM projeta a solução adequada.</p></div><div class="kronix-grid">
+<div class="show"><img src="assets/kronix-predial.png" alt="Dashboard KRONIX predial"><div class="caption"><b>KRONIX — aplicação predial</b><p>Uma interface de supervisão e controle que pode receber a identidade do cliente.</p></div><div class="identity"><strong>PODEMOS COLOCAR SUA LOGO AQUI</strong>Interface personalizada para a identidade do seu projeto.</div></div>
+<div class="show"><img src="assets/kronix-veicular.png" alt="Dashboard KRONIX veicular"><div class="caption"><b>KRONIX — aplicação veicular</b><p>Seu carro assistido por tecnologia: controle, monitoramento e interação em uma única interface.</p></div></div>
+</div></div></section>
+<section class="application" id="aplicacoes"><div class="wrap"><div class="head"><div class="kicker">APLICAÇÕES</div><h2>O KRONIX se adapta ao problema que precisa ser resolvido.</h2><p>As imagens abaixo são exemplos de aplicações. A solução final acompanha o projeto.</p></div><div class="app-grid">
+<article class="app"><img src="assets/kronix-climatizacao.png" alt="Controle e revezamento inteligente de climatização"><div><b>Climatização</b><p>Controle de temperatura, proteção e revezamento inteligente.</p><span class="tag">A SOLUÇÃO ACOMPANHA O TAMANHO DO SEU PROJETO</span></div></article>
+<article class="app"><img src="assets/kronix-predial.png" alt="Supervisão predial KRONIX"><div><b>Predial</b><p>Supervisão, controle e integração de processos conforme a aplicação.</p><span class="tag">PROJETO PERSONALIZADO</span></div></article>
+<article class="app"><img src="assets/kronix-veicular.png" alt="Assistência veicular KRONIX"><div><b>Veicular</b><p>Uma interface para controlar e monitorar recursos do veículo como um assistente.</p><span class="tag">SEU CARRO • SUA APLICAÇÃO</span></div></article>
+</div></div></section>
+<section class="builder"><div class="wrap builder-grid"><div><div class="kicker">MONTE SUA SOLUÇÃO</div><div class="head" style="margin-bottom:10px"><h2>Você define a necessidade. Nós projetamos a solução.</h2><p>O KRONIX não é uma caixa fechada. A aplicação é dimensionada conforme o ambiente, o processo e o objetivo do cliente.</p></div><div class="build-note"><b>Uma plataforma que evolui com o projeto.</b><br>Recursos podem ser adicionados conforme a necessidade, sem obrigar o cliente a implantar tudo de uma vez.</div></div><div class="modules"><div class="module"><b>Energia</b><span>Monitoramento e controle</span></div><div class="module"><b>Água</b><span>Gestão e acompanhamento</span></div><div class="module"><b>Climatização</b><span>Temperatura e revezamento</span></div><div class="module"><b>Iluminação</b><span>Controle de circuitos</span></div><div class="module"><b>Sensores</b><span>Eventos e estados</span></div><div class="module"><b>Telemetria</b><span>Dados e acompanhamento</span></div><div class="module"><b>Veicular</b><span>Assistência e controle</span></div><div class="module"><b>Automação</b><span>Processos e equipamentos</span></div></div></div></section>
+<section class="contact" id="contato"><div class="wrap contact-grid"><div><div class="kicker" style="color:#80dcff">CONTATO</div><h2>Vamos projetar a solução certa para o seu projeto.</h2><p>Conte o que você precisa controlar, monitorar ou integrar. A solução é dimensionada conforme a sua realidade.</p></div><div class="contact-box"><a class="contact-card" href="mailto:comercial@insegcom.com.br"><small>Comercial</small><b>comercial@insegcom.com.br</b></a><a class="contact-card" href="mailto:contato@insegcom.com.br"><small>Contato</small><b>contato@insegcom.com.br</b></a><a class="contact-card" href="mailto:financeiro@insegcom.com.br"><small>Financeiro</small><b>financeiro@insegcom.com.br</b></a><a class="contact-card" href="#contato"><small>Projeto</small><b>Solicitar avaliação</b></a></div></div></section>
+</main><footer><div class="wrap foot"><div><strong>INSEGCOM</strong><div style="font-size:10px;margin-top:4px">TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</div></div><small>© 2026 INSEGCOM. Todos os direitos reservados.</small></div></footer>
+</body></html>
