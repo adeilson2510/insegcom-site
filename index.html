@@ -8,7 +8,7 @@
 <style>
 :root{--n:#03101e;--n2:#061b2e;--b:#087ff0;--c:#16c8ff;--w:#fff;--m:#bfd0dd;--max:1240px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#142438;background:#fff}a{text-decoration:none;color:inherit}.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
-.top{height:38px;background:#020b16;color:#d8e6ef;border-bottom:1px solid #193149;font-size:11px;letter-spacing:1.2px}.top .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.top{height:38px;background:#020b16;color:#d8e6ef;border-bottom:1px solid #193149;font-size:11px;letter-spacing:1.2px;display:block}.top .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}.top-email:hover{color:var(--c)}
 .header{height:86px;position:absolute;top:38px;left:0;right:0;z-index:10;background:rgba(2,12,24,.78);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}.header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
 .logo{width:190px;display:block}.nav{display:flex;align-items:center;gap:32px;color:#fff;font-size:13px;font-weight:800}.nav a:hover{color:var(--c)}.nav .cta{padding:14px 20px;background:#071a2c;border:1px solid #294861;border-radius:7px}
 .hero{min-height:735px;position:relative;overflow:hidden;color:#fff;background:#020a13}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,8,14,.98),rgba(2,8,14,.86) 34%,rgba(2,8,14,.38) 68%,rgba(2,8,14,.76)),url("assets/fundo-cabeamento.jpg") center/cover}.hero .wrap{position:relative;z-index:2;min-height:735px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;padding-top:80px}.k{color:#1bc7ff;font-size:13px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(44px,6vw,70px);line-height:1.02;letter-spacing:-2px;margin:18px 0}.hero p{max-width:670px;font-size:18px;line-height:1.6;color:#d7e3eb;margin:0}.buttons{display:flex;gap:14px;margin-top:30px}.btn{display:inline-block;padding:15px 22px;border-radius:8px;font-size:12px;font-weight:900;border:1px solid #9eb3c3}.primary{background:var(--b);border-color:var(--b);color:#fff}
@@ -27,9 +27,9 @@
 @media(max-width:650px){.critical{grid-template-columns:1fr}.critical-card .critical-image{height:210px}}
 .proposal,.kronix{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}.proposal h2,.kronix h2{font-size:43px;line-height:1.08;margin:8px 0 18px}.proposal p,.kronix p{color:#61778b;line-height:1.7}.pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pillar{padding:22px;border:1px solid #dbe4eb;border-radius:12px;background:#fff}.pillar strong{display:block;margin-bottom:6px}.pillar span{font-size:13px;color:#6b7e8d}.kronix img{width:100%;display:block;border-radius:14px;border:1px solid #dbe5eb;box-shadow:0 20px 45px rgba(0,0,0,.13)}
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.demo{border:1px solid #dbe4eb;border-radius:14px;overflow:hidden;background:#fff}.demo img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.demo-body{padding:19px}.demo h3{margin:0 0 7px}.demo p{margin:0;color:#6a7e8e;font-size:13px;line-height:1.5}
-.contact{background:#061725;color:#fff}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:30px}.contact h2{font-size:42px;margin:8px 0 12px}.contact p{color:#b9cbd8;line-height:1.6;max-width:730px}.footer{background:#020b15;color:#b8c8d3;padding:48px 0}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:35px}.footer h3{color:#fff;font-size:14px}.footer p{font-size:12px;line-height:1.7}.copyright{margin-top:30px;padding-top:18px;border-top:1px solid #183047;font-size:11px}
+.contact{background:#061725;color:#fff}.contact-box{display:flex;justify-content:space-between;align-items:center;gap:30px}.contact h2{font-size:42px;margin:8px 0 12px}.contact p{color:#b9cbd8;line-height:1.6;max-width:730px}.footer{background:#020b15;color:#b8c8d3;padding:48px 0}.footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1.2fr 1.25fr;gap:35px}.footer h3{color:#fff;font-size:14px}.footer p{font-size:12px;line-height:1.7}.footer-email:hover{color:var(--c)}.copyright{margin-top:30px;padding-top:18px;border-top:1px solid #183047;font-size:11px}
 .wa{position:fixed;right:24px;bottom:24px;width:68px;height:68px;border-radius:50%;background:#25D366;display:grid;place-items:center;z-index:50;box-shadow:0 8px 30px rgba(0,0,0,.35);border:4px solid #fff;padding:0}.wa svg{width:100%;height:100%;display:block}
-@media(max-width:1050px){.nav{gap:18px}.hero .wrap{grid-template-columns:1fr}.hero-list{display:none}.service-grid{grid-template-columns:repeat(3,1fr)}.proposal,.kronix{grid-template-columns:1fr}.demos{grid-template-columns:1fr}.contact-box{display:block}}
+@media(max-width:1050px){.nav{gap:18px}.hero .wrap{grid-template-columns:1fr}.hero-list{display:none}.service-grid{grid-template-columns:repeat(3,1fr)}.proposal,.kronix{grid-template-columns:1fr}.demos{grid-template-columns:1fr}}
 @media(max-width:650px){.top{display:none}.header{top:0;height:70px}.logo{width:155px}.nav a:not(.cta){display:none}.hero,.hero .wrap{min-height:680px}.hero .wrap{padding-top:70px}.hero h1{font-size:40px}.buttons{flex-direction:column}.service-grid{grid-template-columns:1fr 1fr}.service{border-bottom:1px solid #19344b}.critical,.pillars{grid-template-columns:1fr}.section{padding:60px 0}.head h2,.proposal h2,.kronix h2,.contact h2{font-size:32px}.footer-grid{grid-template-columns:1fr}.wrap{width:calc(100% - 28px)}}
 </style>
 <style>
@@ -65,9 +65,41 @@
 }
 </style>
 
-<style>#hero-interativo:before{background-image:linear-gradient(90deg,rgba(2,8,14,.98),rgba(2,8,14,.86) 34%,rgba(2,8,14,.38) 68%,rgba(2,8,14,.76)),var(--hero-image)}</style></head>
+<style>#hero-interativo:before{background-image:linear-gradient(90deg,rgba(2,8,14,.98),rgba(2,8,14,.86) 34%,rgba(2,8,14,.38) 68%,rgba(2,8,14,.76)),var(--hero-image)}.contact-head{max-width:850px;margin-bottom:38px}
+.contact-head h2{font-size:42px;line-height:1.08;margin:8px 0 12px}
+.contact-head p{color:#b9cbd8;line-height:1.65;max-width:780px}
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
+.contact-channels{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-channel{padding:25px;border:1px solid #203d55;border-radius:12px;background:#081c2d}
+.contact-channel-k{color:#1bc7ff;font-size:11px;font-weight:900;letter-spacing:1.8px}
+.contact-channel h3{font-size:19px;line-height:1.25;margin:10px 0 8px;color:#fff}
+.contact-channel p{font-size:13px;line-height:1.55;color:#b9cbd8;margin:0 0 17px}
+.contact-channel>a{color:#fff;font-size:13px;font-weight:800}
+.contact-channel>a:hover{color:var(--c)}
+.contact-newsletter{grid-column:1/-1}
+.newsletter-form{display:flex;gap:8px}
+.newsletter-form input,.lead-form input{width:100%;padding:13px 14px;border-radius:7px;border:1px solid #31516b;background:#041321;color:#fff;outline:none}
+.newsletter-form input::placeholder,.lead-form input::placeholder{color:#7f95a6}
+.newsletter-form button{padding:13px 16px;border:1px solid var(--b);border-radius:7px;background:var(--b);color:#fff;font-size:11px;font-weight:900;cursor:pointer}
+.contact-form-card{padding:30px;border-radius:14px;background:#fff;color:#142438;border:1px solid #dbe4eb;box-shadow:0 14px 35px rgba(0,0,0,.14)}
+.contact-form-card h3{font-size:27px;line-height:1.15;margin:10px 0 9px;color:#10283c}
+.contact-form-card>p{font-size:14px;line-height:1.55;color:#61778b;margin:0 0 23px}
+.lead-form label{display:block;font-size:12px;font-weight:800;color:#30475a;margin-bottom:10px}
+.lead-form input{margin-top:7px;border-color:#cdd9e2;background:#f7fafc;color:#142438}
+.form-next-note{font-size:11px;line-height:1.5;color:#708596;margin:9px 0 18px}
+@media(max-width:1050px){.contact-grid{grid-template-columns:1fr}.contact-channels{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.contact-channels{grid-template-columns:1fr}.newsletter-form{flex-direction:column}.contact-head h2{font-size:32px}}.footer-contact{line-height:1.9!important}
+.footer-email{color:inherit;cursor:pointer}
+.footer-email:hover{color:var(--c)}
+.footer-newsletter{display:flex;gap:0;max-width:360px}
+.footer-newsletter input{flex:1;min-width:0;padding:11px 12px;border:1px solid #53697a;border-right:0;border-radius:7px 0 0 7px;background:#fff;color:#142438;outline:none}
+.footer-newsletter input::placeholder{color:#708596}
+.footer-newsletter button{padding:11px 14px;border:1px solid #10223e;border-radius:0 7px 7px 0;background:#10223e;color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;cursor:pointer}
+.footer-newsletter button:hover{background:#087ff0;border-color:#087ff0}
+@media(max-width:1050px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.footer-grid{grid-template-columns:1fr}.footer-newsletter{max-width:100%}}@media(min-width:651px){.top{display:block}}\n</style></head>
 <body>
-<div class="top"><div class="wrap"><span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span><span>☎ (11) 95404-3842 &nbsp; | &nbsp; ✉ comercial@insegcom.com.br</span></div></div>
+<div class="top"><div class="wrap"><span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span><span>☎ (11) 95404-3842 &nbsp; | &nbsp; ✉ <a class="top-email" href="mailto:contato@insegcom.com.br">contato@insegcom.com.br</a></span></div></div>
 <header class="header"><div class="wrap">
 <a href="#"><img class="logo" src="assets/insegcom-logo-site.png" alt="INSEGCOM"></a>
 <nav class="nav"><a href="#quem-somos">QUEM SOMOS</a><a href="#servicos">SERVIÇOS</a><a href="#missao-critica">MISSÃO CRÍTICA</a><a href="#kronix">KRONIX</a><a href="#portfolio">PORTFÓLIO</a><a class="cta" href="#contato">FALE CONOSCO</a></nav>
@@ -148,9 +180,48 @@
 <article class="demo"><img src="assets/kronix-vehicular-real.png" alt="KRONIX Veicular"><div class="demo-body"><h3>KRONIX Veicular</h3><p>Seu carro. Seu assistente.</p></div></article>
 </div></div></section>
 
-<section class="section contact" id="contato"><div class="wrap contact-box"><div><div class="k">FALE COM A INSEGCOM</div><h2>Vamos projetar a solução certa para o seu projeto.</h2><p>Conte o que você precisa instalar, controlar, monitorar ou integrar.</p></div><a class="btn primary" href="mailto:comercial@insegcom.com.br">ENVIAR E-MAIL →</a></div></section>
 
-<footer class="footer"><div class="wrap footer-grid"><div><img class="logo" src="assets/insegcom-logo-site.png" alt="INSEGCOM"><p>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</p></div><div><h3>Serviços</h3><p>Cabeamento estruturado<br>Elétrica e automação<br>Segurança eletrônica<br>Climatização<br>UPS / Nobreaks<br>Ar-condicionado de precisão</p></div><div><h3>Contato</h3><p>comercial@insegcom.com.br<br>(11) 95404-3842</p></div></div><div class="wrap copyright">© 2026 INSEGCOM. Todos os direitos reservados.</div></footer>
+
+<footer class="footer">
+<div class="wrap footer-grid">
+  <div>
+    <img class="logo" src="assets/insegcom-logo-site.png" alt="INSEGCOM">
+    <p>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</p>
+  </div>
+
+  <div>
+    <h3>Serviços</h3>
+    <p>
+      Cabeamento estruturado<br>
+      Elétrica e automação<br>
+      Segurança eletrônica<br>
+      Climatização<br>
+      UPS / Nobreaks<br>
+      Ar-condicionado de precisão
+    </p>
+  </div>
+
+  <div>
+    <h3>Contato</h3>
+    <p class="footer-contact">
+      ☎ (11) 95404-3842<br>
+      ✉ <a class="footer-email" href="mailto:comercial@insegcom.com.br">comercial@insegcom.com.br</a><br>
+      ✉ <a class="footer-email" href="mailto:orcamentos@insegcom.com.br">orcamentos@insegcom.com.br</a><br>
+      ✉ contato@insegcom.com.br
+    </p>
+  </div>
+
+  <div>
+    <h3>Newsletter</h3>
+    <p>Cadastre-se para receber todas as novidades da INSEGCOM.</p>
+    <form class="footer-newsletter" action="#" method="post" onsubmit="return false;">
+      <input type="email" name="newsletter_email" placeholder="Email" aria-label="Seu e-mail" required>
+      <button type="submit">INSCREVER</button>
+    </form>
+  </div>
+</div>
+<div class="wrap copyright">© 2026 INSEGCOM. Todos os direitos reservados.</div>
+</footer>
 
 <a class="wa" href="https://wa.me/5511954043842" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
 <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
