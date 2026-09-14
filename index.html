@@ -114,7 +114,8 @@
 .footer-newsletter button{padding:11px 14px;border:1px solid #10223e;border-radius:0 7px 7px 0;background:#10223e;color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;cursor:pointer}
 .footer-newsletter button:hover{background:#087ff0;border-color:#087ff0}.newsletter-status{font-size:11px;line-height:1.5;margin-top:9px;color:#b9cbd8}.newsletter-success{color:#61e6a0}.newsletter-error{color:#ff9b9b}.newsletter-warning{color:#ffd36b}
 @media(max-width:1050px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.footer-grid{grid-template-columns:1fr}.footer-newsletter{max-width:100%}.copyright{flex-direction:column;align-items:flex-start}}@media(min-width:651px){.top{display:block}}\n</style></head>
+@media(max-width:650px){.footer-grid{grid-template-columns:1fr}.footer-newsletter{max-width:100%}.copyright{flex-direction:column;align-items:flex-start}}@media(min-width:651px){.top{display:block}}\n</style><!-- Newsletter: e-mail do site abre o cadastro oficial no Gestor KRONIX. -->
+</head>
 <body>
 <div class="top"><div class="wrap"><span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span><span>☎ (11) 95404-3842 &nbsp; | &nbsp; ✉ <a class="top-email" href="mailto:contato@insegcom.com.br">contato@insegcom.com.br</a></span></div></div>
 <header class="header"><div class="wrap">
@@ -256,16 +257,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const status = document.getElementById('newsletter-status');
   if (!form || !status) return;
 
-  const STORAGE_KEY = 'insegcom_newsletter_subscribers';
-
-  function getSubscribers() {
-    try {
-      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      return Array.isArray(data) ? data : [];
-    } catch (e) {
-      return [];
-    }
-  }
+  // TESTE LOCAL: o site usa o e-mail apenas como porta de entrada
+  // para a tela real de cadastro do Gestor KRONIX.
+  // Em produção, substituir pela URL pública HTTPS do Gestor.
+  const GESTOR_NEWSLETTER_URL = 'http://127.0.0.1:8090/gestor/newsletter/cadastro';
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -281,33 +276,13 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    const subscribers = getSubscribers();
+    status.textContent = 'Abrindo cadastro no Gestor KRONIX...';
+    status.className = 'newsletter-status newsletter-success';
+    button.disabled = true;
+    button.textContent = 'ABRINDO';
 
-    if (subscribers.some(function (item) { return item.email === email; })) {
-      status.textContent = 'Este e-mail já está cadastrado.';
-      status.className = 'newsletter-status newsletter-warning';
-      return;
-    }
-
-    subscribers.push({
-      email: email,
-      origem: 'site-insegcom',
-      dataCadastro: new Date().toISOString()
-    });
-
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(subscribers));
-      input.value = '';
-      status.textContent = 'E-mail cadastrado com sucesso!';
-      status.className = 'newsletter-status newsletter-success';
-      button.textContent = 'CADASTRADO';
-      setTimeout(function () {
-        button.textContent = 'INSCREVER';
-      }, 2200);
-    } catch (e) {
-      status.textContent = 'Não foi possível salvar o cadastro neste navegador.';
-      status.className = 'newsletter-status newsletter-error';
-    }
+    const target = GESTOR_NEWSLETTER_URL + '?email=' + encodeURIComponent(email);
+    window.location.href = target;
   });
 });
 </script>
