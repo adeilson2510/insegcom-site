@@ -108,6 +108,14 @@
 @media(max-width:650px){.contact-channels{grid-template-columns:1fr}.newsletter-form{flex-direction:column}.contact-head h2{font-size:32px}}.footer-contact{line-height:1.9!important}
 .footer-email{color:inherit;cursor:pointer}
 .footer-email:hover{color:var(--c)}
+.newsletter-form-expanded{display:block!important;max-width:360px}
+.newsletter-email-row{display:flex;gap:0}
+.newsletter-extra{display:grid;gap:7px;margin-top:8px}
+.newsletter-extra[hidden]{display:none!important}
+.newsletter-extra input,.newsletter-extra select{width:100%;box-sizing:border-box;padding:10px 11px;border:1px solid #53697a;border-radius:7px;background:#fff;color:#142438;outline:none;font:inherit}
+.newsletter-extra select{cursor:pointer}
+.newsletter-confirm{padding:11px 14px;border:1px solid #10223e;border-radius:7px;background:#10223e;color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;cursor:pointer}
+.newsletter-confirm:hover{background:#087ff0;border-color:#087ff0}
 .footer-newsletter{display:flex;gap:0;max-width:360px}
 .footer-newsletter input{flex:1;min-width:0;padding:11px 12px;border:1px solid #53697a;border-right:0;border-radius:7px 0 0 7px;background:#fff;color:#142438;outline:none}
 .footer-newsletter input::placeholder{color:#708596}
@@ -232,9 +240,25 @@
   <div>
     <h3>Newsletter</h3>
     <p>Cadastre-se para receber todas as novidades da INSEGCOM.</p>
-    <form class="footer-newsletter" id="newsletter-form" action="#" method="post">
-      <input type="email" name="newsletter_email" placeholder="Email" aria-label="Seu e-mail" required>
-      <button type="submit">INSCREVER</button>
+    <form class="footer-newsletter newsletter-form-expanded" id="newsletter-form" action="#" method="post">
+      <div class="newsletter-email-row">
+        <input type="email" name="newsletter_email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
+        <button type="submit" id="newsletter-next">INSCREVER</button>
+      </div>
+      <div class="newsletter-extra" id="newsletter-extra" hidden>
+        <input type="text" name="newsletter_name" placeholder="Nome" aria-label="Nome" autocomplete="name">
+        <input type="tel" name="newsletter_phone" placeholder="Telefone" aria-label="Telefone" autocomplete="tel">
+        <input type="text" name="newsletter_company" placeholder="Empresa" aria-label="Empresa" autocomplete="organization">
+        <select name="newsletter_interest" aria-label="Interesse">
+          <option value="">Interesse (opcional)</option>
+          <option value="Tecnologia e infraestrutura">Tecnologia e infraestrutura</option>
+          <option value="Climatização">Climatização</option>
+          <option value="Missão crítica">Missão crítica</option>
+          <option value="KRONIX">KRONIX</option>
+          <option value="Outros">Outros</option>
+        </select>
+        <button type="button" class="newsletter-confirm" id="newsletter-confirm">CONFIRMAR CADASTRO</button>
+      </div>
     </form>
     <div id="newsletter-status" class="newsletter-status" aria-live="polite"></div>
   </div>
@@ -255,43 +279,90 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('newsletter-form');
   const status = document.getElementById('newsletter-status');
-  if (!form || !status) return;
+  const extra = document.getElementById('newsletter-extra');
+  const next = document.getElementById('newsletter-next');
+  const confirm = document.getElementById('newsletter-confirm');
+  if (!form || !status || !extra || !next || !confirm) return;
 
-  // O site não cadastra a newsletter e não usa localStorage.
-  // O e-mail é somente a porta de entrada para o cadastro oficial
-  // dentro do Gestor KRONIX.
-  const GESTOR_NEWSLETTER_URL = 'http://127.0.0.1:8090/gestor';
+  // O visitante permanece no site. O Gestor recebe somente os dados enviados
+  // pela API pública de Newsletter; nenhuma tela administrativa é aberta.
+  const NEWSLETTER_API_URL = 'http://127.0.0.1:8090/gestor/api/public/newsletter';
 
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
+  function setStatus(message, type) {
+    status.textContent = message;
+    status.className = 'newsletter-status ' + (type ? 'newsletter-' + type : '');
+  }
 
+  function expandNewsletter(event) {
+    if (event) event.preventDefault();
     const input = form.querySelector('input[type="email"]');
-    const button = form.querySelector('button');
     const email = (input.value || '').trim();
-
     if (!email || !input.checkValidity()) {
-      status.textContent = 'Digite um e-mail válido.';
-      status.className = 'newsletter-status newsletter-error';
+      setStatus('Digite um e-mail válido.', 'error');
       input.focus();
       return;
     }
+    extra.hidden = false;
+    next.textContent = 'E-MAIL OK';
+    next.disabled = true;
+    setStatus('Complete seu cadastro para finalizar.', 'warning');
+    const name = extra.querySelector('input[name="newsletter_name"]');
+    if (name) name.focus();
+  }
 
-    button.disabled = true;
-    button.textContent = 'ABRINDO...';
-    status.textContent = 'Abrindo o cadastro da Newsletter no Gestor KRONIX...';
-    status.className = 'newsletter-status newsletter-success';
+  next.addEventListener('click', expandNewsletter);
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (extra.hidden) expandNewsletter(event);
+    else confirm.click();
+  });
 
-    const target = GESTOR_NEWSLETTER_URL + '?email=' + encodeURIComponent(email);
+  confirm.addEventListener('click', async function () {
+    const emailInput = form.querySelector('input[type="email"]');
+    const email = (emailInput.value || '').trim();
+    if (!email || !emailInput.checkValidity()) {
+      extra.hidden = true;
+      next.disabled = false;
+      next.textContent = 'INSCREVER';
+      setStatus('Digite um e-mail válido.', 'error');
+      emailInput.focus();
+      return;
+    }
 
-    // Abre a tela oficial do Gestor em nova aba.
-    window.open(target, '_blank', 'noopener');
+    confirm.disabled = true;
+    confirm.textContent = 'ENVIANDO...';
+    setStatus('Enviando seu cadastro...', 'warning');
 
-    // Mantém o site aberto e limpa somente o estado visual do formulário.
-    setTimeout(function () {
-      button.disabled = false;
-      button.textContent = 'INSCREVER';
-      status.textContent = 'Cadastro aberto no Gestor KRONIX.';
-    }, 700);
+    const data = new URLSearchParams();
+    data.set('email', email);
+    data.set('name', (form.querySelector('[name="newsletter_name"]').value || '').trim());
+    data.set('phone', (form.querySelector('[name="newsletter_phone"]').value || '').trim());
+    data.set('company', (form.querySelector('[name="newsletter_company"]').value || '').trim());
+    data.set('interest', (form.querySelector('[name="newsletter_interest"]').value || '').trim());
+    data.set('source', 'site-insegcom');
+
+    try {
+      const response = await fetch(NEWSLETTER_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: data.toString()
+      });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const result = await response.json().catch(() => ({}));
+      if (result.ok === false) throw new Error(result.message || 'Cadastro recusado');
+
+      setStatus('Cadastro realizado com sucesso!', 'success');
+      form.reset();
+      extra.hidden = true;
+      next.disabled = false;
+      next.textContent = 'INSCREVER';
+    } catch (error) {
+      setStatus('Não foi possível concluir agora. Tente novamente.', 'error');
+      console.error('Newsletter:', error);
+    } finally {
+      confirm.disabled = false;
+      confirm.textContent = 'CONFIRMAR CADASTRO';
+    }
   });
 });
 </script>
