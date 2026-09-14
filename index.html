@@ -257,9 +257,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const status = document.getElementById('newsletter-status');
   if (!form || !status) return;
 
-  // TESTE LOCAL: o site usa o e-mail apenas como porta de entrada
-  // para a tela real de cadastro do Gestor KRONIX.
-  // Em produção, substituir pela URL pública HTTPS do Gestor.
+  // O site não cadastra a newsletter e não usa localStorage.
+  // O e-mail é somente a porta de entrada para o cadastro oficial
+  // dentro do Gestor KRONIX.
   const GESTOR_NEWSLETTER_URL = 'http://127.0.0.1:8090/gestor/newsletter/cadastro';
 
   form.addEventListener('submit', function (event) {
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const input = form.querySelector('input[type="email"]');
     const button = form.querySelector('button');
-    const email = (input.value || '').trim().toLowerCase();
+    const email = (input.value || '').trim();
 
     if (!email || !input.checkValidity()) {
       status.textContent = 'Digite um e-mail válido.';
@@ -276,13 +276,22 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    status.textContent = 'Abrindo cadastro no Gestor KRONIX...';
-    status.className = 'newsletter-status newsletter-success';
     button.disabled = true;
-    button.textContent = 'ABRINDO';
+    button.textContent = 'ABRINDO...';
+    status.textContent = 'Abrindo o cadastro da Newsletter no Gestor KRONIX...';
+    status.className = 'newsletter-status newsletter-success';
 
     const target = GESTOR_NEWSLETTER_URL + '?email=' + encodeURIComponent(email);
-    window.location.href = target;
+
+    // Abre a tela oficial do Gestor em nova aba.
+    window.open(target, '_blank', 'noopener');
+
+    // Mantém o site aberto e limpa somente o estado visual do formulário.
+    setTimeout(function () {
+      button.disabled = false;
+      button.textContent = 'INSCREVER';
+      status.textContent = 'Cadastro aberto no Gestor KRONIX.';
+    }, 700);
   });
 });
 </script>
