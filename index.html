@@ -122,7 +122,18 @@
 .footer-newsletter button{padding:11px 14px;border:1px solid #10223e;border-radius:0 7px 7px 0;background:#10223e;color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;cursor:pointer}
 .footer-newsletter button:hover{background:#087ff0;border-color:#087ff0}.newsletter-status{font-size:11px;line-height:1.5;margin-top:9px;color:#b9cbd8}.newsletter-success{color:#61e6a0}.newsletter-error{color:#ff9b9b}.newsletter-warning{color:#ffd36b}
 @media(max-width:1050px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.footer-grid{grid-template-columns:1fr}.footer-newsletter{max-width:100%}.copyright{flex-direction:column;align-items:flex-start}}@media(min-width:651px){.top{display:block}}\n</style><!-- Newsletter: e-mail do site abre o cadastro oficial no Gestor KRONIX. -->
+@media(max-width:650px){.footer-grid{grid-template-columns:1fr}.footer-newsletter{max-width:100%}.copyright{flex-direction:column;align-items:flex-start}}@media(min-width:651px){.top{display:block}}\n
+.newsletter-modal{position:fixed;inset:0;z-index:80;background:rgba(2,11,21,.72);display:grid;place-items:center;padding:18px}
+.newsletter-modal[hidden]{display:none!important}
+.newsletter-modal-card{position:relative;width:min(420px,100%);padding:28px 26px 24px;border-radius:14px;background:#fff;color:#142438;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.newsletter-modal-card h3{margin:8px 0 8px;font-size:26px;color:#10283c}
+.newsletter-modal-card p{margin:0 0 16px;font-size:14px;line-height:1.5;color:#61778b}
+.newsletter-modal-k{color:#087ff0;font-size:11px;font-weight:900;letter-spacing:1.8px}
+.newsletter-modal-card label{display:block;font-size:12px;font-weight:800;color:#30475a;margin-bottom:10px}
+.newsletter-modal-card input{display:block;width:100%;margin-top:6px;padding:12px 13px;border:1px solid #cdd9e2;border-radius:7px;background:#f7fafc;color:#142438;outline:none}
+.newsletter-modal-card input[readonly]{color:#5d7384;background:#eef3f7}
+.newsletter-modal-close{position:absolute;top:10px;right:12px;border:0;background:transparent;font-size:26px;line-height:1;cursor:pointer;color:#60788a}
+</style><!-- Newsletter: e-mail abre janela com nome e telefone. -->
 </head>
 <body>
 <div class="top"><div class="wrap"><span>TECNOLOGIA • INFRAESTRUTURA • SEGURANÇA</span><span>☎ (11) 95404-3842 &nbsp; | &nbsp; ✉ <a class="top-email" href="mailto:contato@insegcom.com.br">contato@insegcom.com.br</a></span></div></div>
@@ -245,22 +256,22 @@
         <input type="email" name="newsletter_email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
         <button type="submit" id="newsletter-next">INSCREVER</button>
       </div>
-      <div class="newsletter-extra" id="newsletter-extra" hidden>
-        <input type="text" name="newsletter_name" placeholder="Nome" aria-label="Nome" autocomplete="name">
-        <input type="tel" name="newsletter_phone" placeholder="Telefone" aria-label="Telefone" autocomplete="tel">
-        <input type="text" name="newsletter_company" placeholder="Empresa" aria-label="Empresa" autocomplete="organization">
-        <select name="newsletter_interest" aria-label="Interesse">
-          <option value="">Interesse (opcional)</option>
-          <option value="Tecnologia e infraestrutura">Tecnologia e infraestrutura</option>
-          <option value="Climatização">Climatização</option>
-          <option value="Missão crítica">Missão crítica</option>
-          <option value="KRONIX">KRONIX</option>
-          <option value="Outros">Outros</option>
-        </select>
-        <button type="button" class="newsletter-confirm" id="newsletter-confirm">CONFIRMAR CADASTRO</button>
-      </div>
     </form>
     <div id="newsletter-status" class="newsletter-status" aria-live="polite"></div>
+    <div id="newsletter-modal" class="newsletter-modal" hidden>
+      <div class="newsletter-modal-card" role="dialog" aria-modal="true" aria-labelledby="newsletter-modal-title">
+        <button type="button" class="newsletter-modal-close" id="newsletter-close" aria-label="Fechar">×</button>
+        <div class="newsletter-modal-k">NEWSLETTER</div>
+        <h3 id="newsletter-modal-title">Cadastro simples</h3>
+        <p>Informe nome e telefone para receber as novidades da INSEGCOM.</p>
+        <form id="newsletter-extra">
+          <label>E-mail<input type="email" id="newsletter-modal-email" readonly></label>
+          <label>Nome<input type="text" name="newsletter_name" placeholder="Seu nome" autocomplete="name" required></label>
+          <label>Telefone<input type="tel" name="newsletter_phone" placeholder="(11) 90000-0000" autocomplete="tel" required></label>
+          <button type="submit" class="newsletter-confirm" id="newsletter-confirm">CONFIRMAR CADASTRO</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 <div class="wrap copyright">
@@ -279,21 +290,21 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('newsletter-form');
   const status = document.getElementById('newsletter-status');
+  const modal = document.getElementById('newsletter-modal');
   const extra = document.getElementById('newsletter-extra');
   const next = document.getElementById('newsletter-next');
   const confirm = document.getElementById('newsletter-confirm');
-  if (!form || !status || !extra || !next || !confirm) return;
+  const close = document.getElementById('newsletter-close');
+  const modalEmail = document.getElementById('newsletter-modal-email');
+  if (!form || !status || !modal || !extra || !next || !confirm) return;
 
-  // O visitante permanece no site. O Gestor recebe somente os dados enviados
-  // pela API pública de Newsletter; nenhuma tela administrativa é aberta.
   const NEWSLETTER_API_URL = 'http://127.0.0.1:8090/gestor/api/public/newsletter';
 
   function setStatus(message, type) {
     status.textContent = message;
     status.className = 'newsletter-status ' + (type ? 'newsletter-' + type : '');
   }
-
-  function expandNewsletter(event) {
+  function openModal(event) {
     if (event) event.preventDefault();
     const input = form.querySelector('input[type="email"]');
     const email = (input.value || '').trim();
@@ -302,45 +313,38 @@ document.addEventListener('DOMContentLoaded', function () {
       input.focus();
       return;
     }
-    extra.hidden = false;
-    next.textContent = 'E-MAIL OK';
-    next.disabled = true;
-    setStatus('Complete seu cadastro para finalizar.', 'warning');
+    modalEmail.value = email;
+    modal.hidden = false;
+    setStatus('Complete nome e telefone para finalizar.', 'warning');
     const name = extra.querySelector('input[name="newsletter_name"]');
     if (name) name.focus();
   }
-
-  next.addEventListener('click', expandNewsletter);
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    if (extra.hidden) expandNewsletter(event);
-    else confirm.click();
+  function closeModal() {
+    modal.hidden = true;
+  }
+  next.addEventListener('click', openModal);
+  form.addEventListener('submit', openModal);
+  close.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) closeModal();
   });
-
-  confirm.addEventListener('click', async function () {
-    const emailInput = form.querySelector('input[type="email"]');
-    const email = (emailInput.value || '').trim();
-    if (!email || !emailInput.checkValidity()) {
-      extra.hidden = true;
-      next.disabled = false;
-      next.textContent = 'INSCREVER';
-      setStatus('Digite um e-mail válido.', 'error');
-      emailInput.focus();
+  extra.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    const email = (modalEmail.value || '').trim();
+    const name = (extra.querySelector('[name="newsletter_name"]').value || '').trim();
+    const phone = (extra.querySelector('[name="newsletter_phone"]').value || '').trim();
+    if (!name || !phone) {
+      setStatus('Informe nome e telefone.', 'error');
       return;
     }
-
     confirm.disabled = true;
     confirm.textContent = 'ENVIANDO...';
     setStatus('Enviando seu cadastro...', 'warning');
-
     const data = new URLSearchParams();
     data.set('email', email);
-    data.set('name', (form.querySelector('[name="newsletter_name"]').value || '').trim());
-    data.set('phone', (form.querySelector('[name="newsletter_phone"]').value || '').trim());
-    data.set('company', (form.querySelector('[name="newsletter_company"]').value || '').trim());
-    data.set('interest', (form.querySelector('[name="newsletter_interest"]').value || '').trim());
+    data.set('name', name);
+    data.set('phone', phone);
     data.set('source', 'site-insegcom');
-
     try {
       const response = await fetch(NEWSLETTER_API_URL, {
         method: 'POST',
@@ -350,12 +354,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const result = await response.json().catch(() => ({}));
       if (result.ok === false) throw new Error(result.message || 'Cadastro recusado');
-
       setStatus('Cadastro realizado com sucesso!', 'success');
       form.reset();
-      extra.hidden = true;
-      next.disabled = false;
-      next.textContent = 'INSCREVER';
+      extra.reset();
+      closeModal();
     } catch (error) {
       setStatus('Não foi possível concluir agora. Tente novamente.', 'error');
       console.error('Newsletter:', error);
